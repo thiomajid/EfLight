@@ -35,7 +35,7 @@ To interact with the table, just create a _repository_ class which extends wheth
 
 ```cs
 
-public interface IStudentRepositor : ICrudRepository<Student, int>
+public interface IStudentRepository : ICrudRepository<Student, int>
 {
 
 }
@@ -105,7 +105,7 @@ You can also provide more features to your repository classes depending on your 
 
 ```cs
 
-public interface IStudentRepositor : ICrudRepository<Student, int>
+public interface IStudentRepository : ICrudRepository<Student, int>
 {
     void MakeLastNameNull(int studentId);
 }

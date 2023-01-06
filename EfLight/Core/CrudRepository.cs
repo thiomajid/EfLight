@@ -52,7 +52,7 @@ public partial class CrudRepository<TEntity, TKey> : ICrudRepository<TEntity, TK
     /// Counts the number of records in the <typeparamref name="TEntity"/> entity's table
     /// fullfilling the given <paramref name="predicateFn"/>'s condition.
     /// </summary>
-    /// <param name="predicateFn"></param>
+    /// <param name="predicateFn">A condition that every <typeparamref name="TEntity"/> can fullfill</param>
     public long CountWhere(Expression<Func<TEntity, bool>> predicateFn) =>
         _context.Set<TEntity>().LongCount(predicateFn);
 
