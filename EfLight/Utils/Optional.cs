@@ -14,9 +14,17 @@ public sealed class Optional<TResult>
 
 
     #region Builder functions
+    /// <summary>
+    /// Creates an <see cref="Optional{TResult}"/> from a given <paramref name="value"/>.
+    /// </summary>
+    /// <param name="value">A value used to create the <see cref="Optional{TResult}"/></param>
     public static Optional<TResult> Of(TResult value) => new(value);
 
 #pragma warning disable CS8604 // Existence possible d'un argument de référence null.
+    /// <summary>
+    /// Creates an <see cref="Optional{TResult}"/> from a given <strong>nullable</strong> <paramref name="value"/>.
+    /// </summary>
+    /// <param name="value">A nullable value used to create the <see cref="Optional{TResult}"/></param>
     public static Optional<TResult> OfNullable(TResult? value) => new(value);
 #pragma warning restore CS8604 // Existence possible d'un argument de référence null.
     #endregion
