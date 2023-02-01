@@ -6,14 +6,14 @@ using Microsoft.EntityFrameworkCore;
 
 using System.Linq.Expressions;
 
-
 namespace EfLight.Core;
-public partial class CrudRepository<TEntity, TKey> : ICrudRepository<TEntity, TKey>
+
+public abstract class CrudRepository<TEntity, TKey> : ICrudRepository<TEntity, TKey>
     where TEntity : class
 {
     protected readonly DbContext _context;
 
-    public CrudRepository(DbContext context)
+    protected CrudRepository(DbContext context)
     {
         _context = context;
     }

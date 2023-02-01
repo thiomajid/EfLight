@@ -5,10 +5,10 @@ using EfLight.Utils;
 using Microsoft.EntityFrameworkCore;
 
 namespace EfLight.Core;
-public partial class PagingAndSortingRepository<TEntity, TKey> : CrudRepository<TEntity,TKey>, IPagingAndSortingRepository<TEntity, TKey>
+public abstract class PagingAndSortingRepository<TEntity, TKey> : CrudRepository<TEntity,TKey>, IPagingAndSortingRepository<TEntity, TKey>
     where TEntity : class
 {
-    public PagingAndSortingRepository(DbContext context) : base(context)
+    protected PagingAndSortingRepository(DbContext context) : base(context)
     {
 
     }
@@ -26,7 +26,6 @@ public partial class PagingAndSortingRepository<TEntity, TKey> : CrudRepository<
         .AsNoTrackingWithIdentityResolution()
         .Skip(page.PageNumber * page.PageSize)
         .Take(page.PageSize)
-        .Distinct()
         .ToList();
 
 
@@ -42,7 +41,6 @@ public partial class PagingAndSortingRepository<TEntity, TKey> : CrudRepository<
         .Where(predicateFn)
         .Skip(page.PageNumber * page.PageSize)
         .Take(page.PageSize)
-        .Distinct()
         .ToList();
 
 
@@ -58,7 +56,6 @@ public partial class PagingAndSortingRepository<TEntity, TKey> : CrudRepository<
         .Skip(page.PageNumber * page.PageSize)
         .Take(page.PageSize)
         .OrderBy(orderKey)
-        .Distinct()
         .ToList();
 
 
@@ -75,7 +72,6 @@ public partial class PagingAndSortingRepository<TEntity, TKey> : CrudRepository<
         .Skip(page.PageNumber * page.PageSize)
         .Take(page.PageSize)
         .OrderBy(orderKey)
-        .Distinct()
         .ToList();
 
 
@@ -112,7 +108,6 @@ public partial class PagingAndSortingRepository<TEntity, TKey> : CrudRepository<
         .AsNoTrackingWithIdentityResolution()
         .Skip(page.PageNumber * page.PageSize)
         .Take(page.PageSize)
-        .Distinct()
         .ToListAsync(cancellationToken);
 
 
@@ -128,7 +123,6 @@ public partial class PagingAndSortingRepository<TEntity, TKey> : CrudRepository<
         .Skip(page.PageNumber * page.PageSize)
         .Take(page.PageSize)
         .OrderBy(orderKey)
-        .Distinct()
         .ToListAsync(cancellationToken);
 
 
@@ -145,6 +139,5 @@ public partial class PagingAndSortingRepository<TEntity, TKey> : CrudRepository<
         .Skip(page.PageNumber * page.PageSize)
         .Take(page.PageSize)
         .OrderBy(orderKey)
-        .Distinct()
         .ToListAsync(cancellationToken);
 }
