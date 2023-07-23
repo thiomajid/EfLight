@@ -8,6 +8,24 @@ public sealed class Optional<TResult>
 {
     private readonly TResult _value;
 
+
+    /// <summary>
+    /// Indicates if the <see cref="Value"/> is not null.
+    /// </summary>
+    public bool HasValue { get => _value is not null; }
+
+
+    /// <summary>
+    /// Returns the value held in the <see cref="Optional{T}"/>
+    /// </summary>
+    /// <throws><see cref="NullReferenceException"/> when the <see cref="Value"/> is null.</throws>
+    public TResult Value
+    {
+        get => HasValue ?
+            _value! :
+            throw new NullReferenceException($"The optional of type {nameof(TResult)} has no value");
+    }
+
     #region Constructor
     private Optional(TResult value) => _value = value;
     #endregion
@@ -31,24 +49,6 @@ public sealed class Optional<TResult>
 
 
     /// <summary>
-    /// Indicates if the <see cref="Value"/> is not null.
-    /// </summary>
-    public bool IsPresent { get => _value is not null; }
-
-
-    /// <summary>
-    /// Returns the value held in the <see cref="Optional{T}"/>
-    /// </summary>
-    /// <throws><see cref="NullReferenceException"/> when the <see cref="Value"/> is null.</throws>
-    public TResult Value
-    {
-        get => IsPresent ?
-            _value! :
-            throw new NullReferenceException($"The optional of type {nameof(TResult)} has no value");
-    }
-
-
-    /// <summary>
     /// If the current value held by the <see cref="Optional{T}"/> is null
     /// then the <paramref name="fallback"/> value will be returned.
     /// </summary>
@@ -66,7 +66,7 @@ public sealed class Optional<TResult>
     /// </param>
     public TResult OrElseThrow(Func<Exception> exceptionSupplier)
     {
-        if (IsPresent) return Value;
+        if (HasValue) return Value;
         throw exceptionSupplier.Invoke();
     }
 
@@ -81,7 +81,7 @@ public sealed class Optional<TResult>
     /// </param>
     public TResult IfNullThen(Action callbackAction)
     {
-        if (IsPresent) return Value;
+        if (HasValue) return Value;
         callbackAction.Invoke();
 
 #pragma warning disable CS8603 // Existence possible d'un retour de référence null.

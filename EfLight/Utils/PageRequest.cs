@@ -6,12 +6,12 @@
 public sealed partial class PageRequest
 {
     /// <summary>
-    /// The requested page index.
+    /// The request page index.
     /// </summary>
     public int PageNumber { get; init; }
 
     /// <summary>
-    /// The number of entries to retrieve.
+    /// The number of items to fetch.
     /// </summary>
     public int PageSize { get; init; }
 

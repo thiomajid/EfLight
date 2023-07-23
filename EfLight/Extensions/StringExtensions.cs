@@ -1,5 +1,5 @@
 ﻿namespace EfLight.Extensions;
-internal static class Stringx
+internal static class StringExtensions
 {
     /// <summary>
     /// Prints the string to the <see cref="Console"/>
