@@ -10,7 +10,7 @@ It provides two base classes:
 
 - PagingAndSortingRepository: it extends **CrudRepository** and provides **pagination** features on top of existing features of CrudRepository.
 
-## Example
+## Getting started
 
 Suppose that we have an entity class named _Student_ and our DbContext is already configured.
 
@@ -51,14 +51,17 @@ class StudentRepository : CrudRepository<Student, int>, IStudentRepository
 
 ```
 
-Then, you can register your repository class in the **IoC** container in order to use it from anywhere.
+Then in `Program.cs`, you can register all of your repositories using:
 
 ```cs
 
-builder.Services.AddScoped<IStudentRepository, StudentRepository>();
+builder.Services.AddEfLight<Program>();
 
 ```
 
+
+### Usage
+---
 All you have to do is to inject it where it is needed. For example:
 
 ```cs
@@ -89,7 +92,7 @@ public class StudentService
         student = result.OrElseThrow(() => new Exception());
 
         // Instead of throwing an exception, you can also do
-        student  = result.IfNullThen(() => {
+        result.IfNullThen(() => {
             student = _repository.FindWhere(x => x.FirstName == name);
         });
 
@@ -99,7 +102,7 @@ public class StudentService
 
 ```
 
-## Adding your features
+## Custom queries
 
 You can also provide more features to your repository classes depending on your use cases. Just use an interface defining the contract and provide your own implementation of that use case.
 
@@ -107,7 +110,7 @@ You can also provide more features to your repository classes depending on your 
 
 public interface IStudentRepository : ICrudRepository<Student, int>
 {
-    void MakeLastNameNull(int studentId);
+    void UpsertById(int studentId);
 }
 
 ```
@@ -123,7 +126,7 @@ class StudentRepository : CrudRepository<Student, int>, IStudentRepository
 
     }
 
-    public void MakeLastNameNull(int studentId)
+    public void UpsertById(int studentId)
     {
         // Your implementation
     }
@@ -131,6 +134,40 @@ class StudentRepository : CrudRepository<Student, int>, IStudentRepository
 
 ```
 
+## Lifetime
+
+When you register your repositories, you can specify the lifetime of your repositories. By default, it is set to `ServiceLifetime.Scoped`,
+but you can provide your default lifetime using:
+
+```cs
+
+builder.Services.AddEfLight<Program>(options => {
+    options.DefaultLifetime = ServiceLifetime.SingleTransient;
+});
+
+```
+
+On top of that, you can specify the lifetime of each repository using
+`RepositoryLifetime` attribute on the repository class:
+
+```cs
+
+[RepositoryLifetime(ServiceLifetime.Scoped)]
+public class StudentRepository : CrudRepository<Student, int>, IStudentRepository
+{
+    public StudentRepository(YourDbContext context) : base(context)
+    {
+
+    }
+}
+
+```
+
+```
+
+```
+
+
 ## PS
 
-Want to contribute ? Keep me in touch ;-)
+Want to contribute ? Feel free to open pull requests.

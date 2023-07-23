@@ -9,13 +9,13 @@ public interface IPagingAndSortingRepository<TEntity, TKey> : ICrudRepository<TE
     /// <summary>
     /// Retrives all records held in <typeparamref name="TEntity"/> entity's table.
     /// </summary>
-    IEnumerable<TEntity> FindAll();
+    IEnumerable<TEntity> FindAll(bool track = false);
 
 
     /// <summary>
     /// Returns a given set of at most <paramref name="PageSize"/> of <typeparamref name="TEntity"/> 
     /// </summary>
-    IEnumerable<TEntity> FindAll(PageRequest page);
+    IEnumerable<TEntity> FindAll(PageRequest page, bool track = false);
 
 
     /// <summary>
@@ -24,7 +24,7 @@ public interface IPagingAndSortingRepository<TEntity, TKey> : ICrudRepository<TE
     /// </summary>
     /// <param name="PageNumber"></param>
     /// <param name="PageSize"></param>
-    IEnumerable<TEntity> FindAll(PageRequest page, Expression<Func<TEntity, bool>> predicateFn);
+    IEnumerable<TEntity> FindAll(PageRequest page, Expression<Func<TEntity, bool>> predicateFn, bool track = false);
 
 
     /// <summary>
@@ -33,7 +33,10 @@ public interface IPagingAndSortingRepository<TEntity, TKey> : ICrudRepository<TE
     /// </summary>
     /// <param name="PageNumber"></param>
     /// <param name="PageSize"></param>
-    IEnumerable<TEntity> FindAll<TOrderKey>(PageRequest page, Expression<Func<TEntity, TOrderKey>> orderKey);
+    IEnumerable<TEntity> FindAll<TOrderKey>(PageRequest page, 
+        Expression<Func<TEntity, TOrderKey>> orderKey,
+        SortDirection sort = SortDirection.Ascending,
+        bool track = false);
 
 
     /// <summary>
@@ -42,13 +45,17 @@ public interface IPagingAndSortingRepository<TEntity, TKey> : ICrudRepository<TE
     /// </summary>
     /// <param name="PageNumber"></param>
     /// <param name="PageSize"></param>
-    IEnumerable<TEntity> FindAll<TOrderKey>(PageRequest page, Expression<Func<TEntity, bool>> predicateFn, Expression<Func<TEntity, TOrderKey>> orderKey);
+    IEnumerable<TEntity> FindAll<TOrderKey>(PageRequest page,
+        Expression<Func<TEntity, bool>> predicateFn,
+        Expression<Func<TEntity, TOrderKey>> orderKey,
+        SortDirection sort = SortDirection.Ascending,
+        bool track = false);
 
 
     /// <summary>
     /// Retrives all records held in <typeparamref name="TEntity"/> entity's table.
     /// </summary>
-    Task<IEnumerable<TEntity>> FindAllAsync(CancellationToken cancellationToken = default);
+    Task<IEnumerable<TEntity>> FindAllAsync(bool track = false, CancellationToken cancellationToken = default);
 
 
     /// <summary>
@@ -56,7 +63,7 @@ public interface IPagingAndSortingRepository<TEntity, TKey> : ICrudRepository<TE
     /// </summary>
     /// <param name="PageNumber"></param>
     /// <param name="PageSize"></param>
-    Task<IEnumerable<TEntity>> FindAllAsync(PageRequest page, CancellationToken cancellationToken = default);
+    Task<IEnumerable<TEntity>> FindAllAsync(PageRequest page, bool track = false, CancellationToken cancellationToken = default);
 
 
     /// <summary>
@@ -65,7 +72,10 @@ public interface IPagingAndSortingRepository<TEntity, TKey> : ICrudRepository<TE
     /// </summary>
     /// <param name="PageNumber"></param>
     /// <param name="PageSize"></param>
-    Task<IEnumerable<TEntity>> FindAllAsync(PageRequest page, Expression<Func<TEntity, bool>> predicateFn, CancellationToken cancellationToken = default);
+    Task<IEnumerable<TEntity>> FindAllAsync(
+        PageRequest page, Expression<Func<TEntity, bool>> predicateFn, 
+        bool track = false,
+        CancellationToken cancellationToken = default);
 
 
     /// <summary>
@@ -74,7 +84,11 @@ public interface IPagingAndSortingRepository<TEntity, TKey> : ICrudRepository<TE
     /// </summary>
     /// <param name="PageNumber"></param>
     /// <param name="PageSize"></param>
-    Task<IEnumerable<TEntity>> FindAllAsync<TOrderKey>(PageRequest page, Expression<Func<TEntity, TOrderKey>> orderKey, CancellationToken cancellationToken = default);
+    Task<IEnumerable<TEntity>> FindAllAsync<TOrderKey>(PageRequest page, 
+        Expression<Func<TEntity, TOrderKey>> orderKey, 
+        SortDirection sort = SortDirection.Ascending,
+        bool track = false,
+        CancellationToken cancellationToken = default);
 
 
     /// <summary>
@@ -83,6 +97,11 @@ public interface IPagingAndSortingRepository<TEntity, TKey> : ICrudRepository<TE
     /// </summary>
     /// <param name="PageNumber"></param>
     /// <param name="PageSize"></param>
-    Task<IEnumerable<TEntity>> FindAllAsync<TOrderKey>(PageRequest page, Expression<Func<TEntity, bool>> predicateFn, Expression<Func<TEntity, TOrderKey>> orderKey, CancellationToken cancellationToken = default);
+    Task<IEnumerable<TEntity>> FindAllAsync<TOrderKey>(PageRequest page, 
+        Expression<Func<TEntity, bool>> predicateFn, 
+        Expression<Func<TEntity, TOrderKey>> orderKey, 
+        SortDirection sort = SortDirection.Ascending,
+        bool track = false,
+        CancellationToken cancellationToken = default);
 }
 

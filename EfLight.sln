@@ -5,8 +5,6 @@ VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EfLight", "EfLight\EfLight.csproj", "{81296272-6B91-4E4A-A556-4E8E24D14936}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EfLightDocs", "EfLightDocs\EfLightDocs.csproj", "{53B60604-32EA-480D-998B-F051266A35DC}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,10 +15,6 @@ Global
 		{81296272-6B91-4E4A-A556-4E8E24D14936}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81296272-6B91-4E4A-A556-4E8E24D14936}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81296272-6B91-4E4A-A556-4E8E24D14936}.Release|Any CPU.Build.0 = Release|Any CPU
-		{53B60604-32EA-480D-998B-F051266A35DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{53B60604-32EA-480D-998B-F051266A35DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{53B60604-32EA-480D-998B-F051266A35DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{53B60604-32EA-480D-998B-F051266A35DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

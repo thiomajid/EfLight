@@ -8,15 +8,18 @@ using System.Linq.Expressions;
 
 namespace EfLight.Core;
 
-public abstract class CrudRepository<TEntity, TKey> : ICrudRepository<TEntity, TKey>
+public abstract class CrudRepository<TEntity, TKey> : LightRepository, ICrudRepository<TEntity, TKey>
     where TEntity : class
 {
-    protected readonly DbContext _context;
+    /// <summary>
+    /// The <see cref="DbSet{TEntity}"/> related to this repository.
+    /// </summary>
+    protected DbSet<TEntity> _set { get => _context.Set<TEntity>(); }
 
-    protected CrudRepository(DbContext context)
+    protected CrudRepository(DbContext context) : base(context)
     {
-        _context = context;
     }
+
 
     #region Save fns
     /// <summary>

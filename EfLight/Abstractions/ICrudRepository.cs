@@ -3,7 +3,7 @@
 using System.Linq.Expressions;
 
 namespace EfLight.Abstractions;
-public interface ICrudRepository<TEntity, TKey> where TEntity : class
+public interface ICrudRepository<TEntity, TKey> : ILightRepository where TEntity : class
 {
     #region Save fns
     /// <summary>
