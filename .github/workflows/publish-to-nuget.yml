@@ -24,7 +24,7 @@ jobs:
           dotnet-version: 8.0.x
 
       - name: Build
-        run: dotnet build --configuration --configuration ${{ env.BUILD_CONFIG }} ${{ env.SOLUTION }}
+        run: dotnet build --configuration ${{ env.BUILD_CONFIG }} ${{ env.SOLUTION }}
 
       - name: Package
         run: >
