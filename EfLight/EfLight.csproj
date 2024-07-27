@@ -43,9 +43,4 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="8.0.7" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Content Include=".github\workflows\publish-to-nuget.yml" />
-  </ItemGroup>
-
 </Project>
