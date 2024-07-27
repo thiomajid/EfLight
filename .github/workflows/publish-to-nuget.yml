@@ -11,9 +11,9 @@ on:
 jobs:
   build:
     env:
-      BUILD_CONFIG: 'Release'
-      SOLUTION: 'EfLight.sln'
-    runs-on: ubuntu-latest
+      BUILD_CONFIG: "Release"
+      SOLUTION: "EfLight.sln"
+    runs-on: windows-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -33,11 +33,6 @@ jobs:
 
       - name: Publish
         run: >
-          dotnet nuget push PackageUtils.${{ github.ref_name }}.nupkg
-          -s https://nuget.pkg.github.com/reniciuspagotto/index.json
+          dotnet nuget push EfLight.${{ github.ref_name }}.nupkg
+          -s https://nuget.pkg.github.com/thiomajid/index.json
           -k ${{ secrets.NUGET_API_KEY }}
-
-  
-
-
-    
