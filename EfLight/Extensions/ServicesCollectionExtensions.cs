@@ -48,7 +48,7 @@ public static class ServicesCollectionExtensions
              .SingleOrDefault(inter => inter.InheritsFromRepositoryInterface());
 
             var lifetimeAttribute = repoClass.GetCustomAttribute<RepositoryLifetimeAttribute>();
-
+            
             if (implInterface is null)
             {
                 throw new ArgumentException($"{repoClass.Name} must implement at least ICrudRepository");

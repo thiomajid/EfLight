@@ -1,53 +1,47 @@
-﻿using EfLight.Abstractions;
+﻿using System.Linq.Expressions;
+using EfLight.Abstractions;
 using EfLight.Extensions;
-using EfLight.Utils;
-
+using LanguageExt;
 using Microsoft.EntityFrameworkCore;
-
-using System.Linq.Expressions;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Microsoft.EntityFrameworkCore.Query;
 
 namespace EfLight.Core;
 
-public abstract class CrudRepository<TEntity, TKey> : LightRepository, ICrudRepository<TEntity, TKey>
+public abstract class CrudRepository<TEntity, TKey>(DbContext context)
+    : LightRepository(context), ICrudRepository<TEntity, TKey>
     where TEntity : class
 {
-    /// <summary>
-    /// The <see cref="DbSet{TEntity}"/> related to this repository.
-    /// </summary>
-    protected DbSet<TEntity> _set { get => _context.Set<TEntity>(); }
-
-    protected CrudRepository(DbContext context) : base(context)
-    {
-    }
-
-
     #region Save fns
+
     /// <summary>
     /// Commits changes to the database.
     /// </summary>
     /// <returns>The number of modified entries.</returns>
-    public int SaveChanges() => _context.SaveChanges();
+    public virtual int SaveChanges() => _context.SaveChanges();
 
 
     /// <summary>
     /// Commits changes to the database.
     /// </summary>
     /// <returns>The number of modified entries.</returns>
-    public async Task<int> SaveChangesAsync() => await _context.SaveChangesAsync();
+    public virtual async Task<int> SaveChangesAsync() => await _context.SaveChangesAsync();
+
     #endregion
 
 
     #region Count fns
+
     /// <summary>
     /// Counts the number of records in the <typeparamref name="TEntity"/> entity's table.
     /// </summary>
-    public long Count() => _context.Set<TEntity>().LongCount();
+    public virtual long Count() => _context.Set<TEntity>().LongCount();
 
 
     /// <summary>
     /// Counts the number of records in the <typeparamref name="TEntity"/> entity's table.
     /// </summary>
-    public async Task<long> CountAsync(CancellationToken cancellationToken = default) =>
+    public virtual async Task<long> CountAsync(CancellationToken cancellationToken = default) =>
         await _context.Set<TEntity>().LongCountAsync(cancellationToken);
 
 
@@ -56,7 +50,7 @@ public abstract class CrudRepository<TEntity, TKey> : LightRepository, ICrudRepo
     /// fullfilling the given <paramref name="predicateFn"/>'s condition.
     /// </summary>
     /// <param name="predicateFn">A condition that every <typeparamref name="TEntity"/> can fullfill</param>
-    public long CountWhere(Expression<Func<TEntity, bool>> predicateFn) =>
+    public virtual long CountWhere(Expression<Func<TEntity, bool>> predicateFn) =>
         _context.Set<TEntity>().LongCount(predicateFn);
 
 
@@ -65,12 +59,15 @@ public abstract class CrudRepository<TEntity, TKey> : LightRepository, ICrudRepo
     /// fullfilling the given <paramref name="predicateFn"/>'s condition.
     /// </summary>
     /// <param name="predicateFn"></param>
-    public async Task<long> CountWhereAsync(Expression<Func<TEntity, bool>> predicateFn, CancellationToken cancellationToken = default) =>
+    public virtual async Task<long> CountWhereAsync(Expression<Func<TEntity, bool>> predicateFn,
+        CancellationToken cancellationToken = default) =>
         await _context.Set<TEntity>().LongCountAsync(predicateFn, cancellationToken);
+
     #endregion
 
 
     #region Delete fns
+
     /// <summary>
     /// Deletes a given <typeparamref name="TEntity"/> entity based on its <paramref name="id"/>.
     /// </summary>
@@ -82,15 +79,14 @@ public abstract class CrudRepository<TEntity, TKey> : LightRepository, ICrudRepo
     /// <exception cref="NullReferenceException">
     /// Thrown if no entry matches the given <paramref name="id"/>
     /// </exception>
-    public int DeleteById(TKey id)
+    public virtual EntityEntry<TEntity> DeleteById(TKey id)
     {
-        TEntity? entity = _context.Set<TEntity>().Find(id);
-
+        var entity = _context.Set<TEntity>().Find(id);
         if (entity is not null)
         {
-            _context.Remove(entity);
-            return 1;
+            return _context.Remove(entity);
         }
+
         throw new NullReferenceException(message: $"No entity has the key {id} in the table of {nameof(TEntity)}");
     }
 
@@ -106,16 +102,18 @@ public abstract class CrudRepository<TEntity, TKey> : LightRepository, ICrudRepo
     /// <exception cref="NullReferenceException">
     /// Thrown if no entry matches the given <paramref name="id"/>
     /// </exception>
-    public async Task<int> DeleteByIdAsync(TKey id, CancellationToken cancellationToken = default)
+    public virtual async Task<EntityEntry<TEntity>> DeleteByIdAsync(
+        TKey id,
+        CancellationToken cancellationToken = default
+    )
     {
-        TEntity? entity = await _context.Set<TEntity>().FindAsync(id, cancellationToken);
-
-        if (entity is not null)
+        var entity = await _context.Set<TEntity>().FindAsync(id, cancellationToken);
+        if (entity is null)
         {
-            _context.Remove(entity);
-            return 1;
+            throw new NullReferenceException(message: $"No entity has the key {id} in the table of {nameof(TEntity)}");
         }
-        throw new NullReferenceException(message: $"No entity has the key {id} in the table of {nameof(TEntity)}");
+
+        return _context.Remove(entity);
     }
 
 
@@ -125,16 +123,9 @@ public abstract class CrudRepository<TEntity, TKey> : LightRepository, ICrudRepo
     /// <param name="predicateFn"></param>
     /// <returns>The number of removed rows.</returns>
     /// <exception cref="NullReferenceException"></exception>
-    public int DeleteWhere(Expression<Func<TEntity, bool>> predicateFn)
+    public virtual int DeleteWhere(Expression<Func<TEntity, bool>> predicateFn)
     {
-        IEnumerable<TEntity> entities = _context.Set<TEntity>().Where(predicateFn);
-
-        if (entities.Any())
-        {
-            _context.RemoveRange(entities);
-            return entities.Count();
-        }
-        throw new NullReferenceException($"One of the provided ID is invalid.");
+        return _context.Set<TEntity>().Where(predicateFn).ExecuteDelete();
     }
 
 
@@ -144,67 +135,78 @@ public abstract class CrudRepository<TEntity, TKey> : LightRepository, ICrudRepo
     /// <param name="predicateFn"></param>
     /// <returns>The number of removed rows.</returns>
     /// <exception cref="NullReferenceException"></exception>
-    public Task<int> DeleteWhereAsync(Expression<Func<TEntity, bool>> predicateFn, CancellationToken cancellationToken = default)
+    public virtual Task<int> DeleteWhereAsync(
+        Expression<Func<TEntity, bool>> predicateFn,
+        CancellationToken cancellationToken = default
+    )
     {
-        IEnumerable<TEntity> entities = _context.Set<TEntity>().Where(predicateFn);
-
-        if (entities.Any())
-        {
-            _context.RemoveRange(entities);
-            return Task.FromResult(entities.Count());
-        }
-        throw new NullReferenceException($"One of the provided ID is invalid.");
+        return _context.Set<TEntity>().Where(predicateFn).ExecuteDeleteAsync(cancellationToken);
     }
+
     #endregion
 
 
     #region Existence fns
-    /// <summary>
-    /// Checks if at least one <typeparamref name="TEntity"/> fullfills the condition of
-    /// the <paramref name="predicateFn"/>.
-    /// </summary>
-    /// <param name="predicateFn"></param>
-    public bool ExistsWhere(Expression<Func<TEntity, bool>> predicateFn) => _context.Set<TEntity>().Any(predicateFn);
-
 
     /// <summary>
     /// Checks if at least one <typeparamref name="TEntity"/> fullfills the condition of
     /// the <paramref name="predicateFn"/>.
     /// </summary>
     /// <param name="predicateFn"></param>
-    public async Task<bool> ExistsWhereAsync(Expression<Func<TEntity, bool>> predicateFn) => await _context.Set<TEntity>().AnyAsync(predicateFn);
+    public virtual bool ExistsWhere(Expression<Func<TEntity, bool>> predicateFn) =>
+        _context.Set<TEntity>().Any(predicateFn);
+
+
+    /// <summary>
+    /// Checks if at least one <typeparamref name="TEntity"/> fullfills the condition of
+    /// the <paramref name="predicateFn"/>.
+    /// </summary>
+    /// <param name="predicateFn"></param>
+    public virtual async Task<bool> ExistsWhereAsync(Expression<Func<TEntity, bool>> predicateFn) =>
+        await _context.Set<TEntity>().AnyAsync(predicateFn);
 
 
     /// <summary>
     /// Checks if all <see cref="TEntity"/> fullfills the given <paramref name="predicateFn"/>
     /// </summary>
     /// <param name="predicateFn"></param>
-    public bool AllAre(Expression<Func<TEntity, bool>> predicateFn) => _context.Set<TEntity>().All(predicateFn);
+    public virtual bool AllAre(Expression<Func<TEntity, bool>> predicateFn) => _context.Set<TEntity>().All(predicateFn);
 
 
     /// <summary>
     /// Checks if all <see cref="TEntity"/> fullfills the given <paramref name="predicateFn"/>
     /// </summary>
     /// <param name="predicateFn"></param>
-    public async Task<bool> AllAreAsync(Expression<Func<TEntity, bool>> predicateFn) => await _context.Set<TEntity>().AllAsync(predicateFn);
+    public virtual async Task<bool> AllAreAsync(Expression<Func<TEntity, bool>> predicateFn) =>
+        await _context.Set<TEntity>().AllAsync(predicateFn);
+
     #endregion
 
 
     #region Select fns
+
     /// <summary>
     /// Finds the <typeparamref name="TEntity"/>'s having the given <paramref name="id"/>.
     /// </summary>
     /// <param name="id"></param>
-    public Optional<TEntity> FindById(TKey id) =>
-        Optional<TEntity>.OfNullable(_context.Set<TEntity>().Find(id));
+    public virtual Option<TEntity> FindById(TKey id)
+    {
+        var entity = _context.Set<TEntity>().Find(id);
+        return entity.ToOption();
+    }
 
 
     /// <summary>
     /// Finds the <typeparamref name="TEntity"/>'s having the given <paramref name="id"/>.
     /// </summary>
     /// <param name="id"></param>
-    public async Task<Optional<TEntity>> FindByIdAsync(TKey id, CancellationToken cancellationToken = default) =>
-        Optional<TEntity>.OfNullable(await _context.Set<TEntity>().FindAsync(id, cancellationToken));
+    public virtual async Task<Option<TEntity>> FindByIdAsync(TKey id, CancellationToken cancellationToken = default)
+    {
+        var entity = await _context.Set<TEntity>()
+            .FindAsync(id, cancellationToken);
+
+        return entity.ToOption();
+    }
 
 
     /// <summary>
@@ -212,12 +214,13 @@ public abstract class CrudRepository<TEntity, TKey> : LightRepository, ICrudRepo
     /// the given <paramref name="predicateFn"/>.
     /// </summary>
     /// <param name="predicateFn"></param>
-    public Optional<TEntity> FindWhere(Expression<Func<TEntity, bool>> predicateFn)
+    public virtual Option<TEntity> FindWhere(Expression<Func<TEntity, bool>> predicateFn)
     {
-        TEntity? result = _context.Set<TEntity>().Where(predicateFn)
+        var entity = _context.Set<TEntity>()
+            .Where(predicateFn)
             .FirstOrDefault();
 
-        return Optional<TEntity>.OfNullable(result);
+        return entity.ToOption();
     }
 
 
@@ -226,37 +229,30 @@ public abstract class CrudRepository<TEntity, TKey> : LightRepository, ICrudRepo
     /// the given <paramref name="predicateFn"/>.
     /// </summary>
     /// <param name="predicateFn"></param>
-    public async Task<Optional<TEntity>> FindWhereAsync(Expression<Func<TEntity, bool>> predicateFn, CancellationToken cancellationToken = default)
+    public virtual async Task<Option<TEntity>> FindWhereAsync(
+        Expression<Func<TEntity, bool>> predicateFn,
+        CancellationToken cancellationToken = default
+    )
     {
-        TEntity? result = await _context.Set<TEntity>().Where(predicateFn)
+        var entity = await _context.Set<TEntity>()
+            .Where(predicateFn)
             .FirstOrDefaultAsync(cancellationToken);
 
-        return Optional<TEntity>.OfNullable(result);
+        return entity.ToOption();
     }
+
     #endregion
 
 
     #region Create fns
+
     /// <summary>
     /// Persists the given <typeparamref name="TEntity"/> entity to the database.
     /// </summary>
     /// <param name="entity"></param>
-    /// <returns>
-    /// <strong>1</strong> if the entity has been saved. Otherwise,
-    /// it will be <strong>0</strong>.
-    /// </returns>
-    public int Add(TEntity entity)
+    public virtual EntityEntry<TEntity> Add(TEntity entity)
     {
-        try
-        {
-            _context.Set<TEntity>().Add(entity);
-            return 1;
-        }
-        catch (Exception ex)
-        {
-            ex.StackTrace?.ToConsole();
-            return 0;
-        }
+        return _context.Set<TEntity>().Add(entity);
     }
 
 
@@ -264,22 +260,10 @@ public abstract class CrudRepository<TEntity, TKey> : LightRepository, ICrudRepo
     /// Persists the given <typeparamref name="TEntity"/> entity to the database.
     /// </summary>
     /// <param name="entity"></param>
-    /// <returns>
-    /// <strong>1</strong> if the entity has been saved. Otherwise,
-    /// it will be <strong>0</strong>.
-    /// </returns>
-    public async Task<int> AddAsync(TEntity entity, CancellationToken cancellationToken = default)
+    public virtual async Task<EntityEntry<TEntity>> AddAsync(TEntity entity,
+        CancellationToken cancellationToken = default)
     {
-        try
-        {
-            await _context.Set<TEntity>().AddAsync(entity, cancellationToken);
-            return 1;
-        }
-        catch (Exception ex)
-        {
-            ex.StackTrace?.ToConsole();
-            return 0;
-        }
+        return await _context.Set<TEntity>().AddAsync(entity, cancellationToken);
     }
 
 
@@ -290,18 +274,10 @@ public abstract class CrudRepository<TEntity, TKey> : LightRepository, ICrudRepo
     /// <returns>
     /// The number of added records. If an error occurs, then the function will return 0.
     /// </returns>
-    public int AddMany(IEnumerable<TEntity> entities)
+    public virtual int AddMany(IEnumerable<TEntity> entities)
     {
-        try
-        {
-            _context.Set<TEntity>().AddRange(entities);
-            return entities.Count();
-        }
-        catch (Exception ex)
-        {
-            ex.StackTrace?.ToConsole();
-            return 0;
-        }
+        _context.Set<TEntity>().AddRange(entities);
+        return entities.Count();
     }
 
 
@@ -312,19 +288,23 @@ public abstract class CrudRepository<TEntity, TKey> : LightRepository, ICrudRepo
     /// <returns>
     /// The number of added records. If an error occurs, then the function will return 0.
     /// </returns>
-    //public Task<int> AddManyAsync(IEnumerable<TEntity> entities, CancellationToken cancellationToken = default)
-    //{
-    //    throw new NotImplementedException();
-    //}
+    public virtual async Task<int> AddManyAsync(IEnumerable<TEntity> entities,
+        CancellationToken cancellationToken = default)
+    {
+        await _context.Set<TEntity>().AddRangeAsync(entities, cancellationToken);
+        return entities.Count();
+    }
+
     #endregion
 
 
     #region Update fns
+
     /// <summary>
     /// Updates data related to <typeparamref name="TEntity"/>'s entity.
     /// </summary>
     /// <param name="entity"></param>
-    public int Update(TEntity entity)
+    public virtual int Update(TEntity entity)
     {
         _context.Set<TEntity>().Update(entity);
         return 1;
@@ -336,10 +316,33 @@ public abstract class CrudRepository<TEntity, TKey> : LightRepository, ICrudRepo
     /// </summary>
     /// <param name="entities"></param>
     /// <returns></returns>
-    public int UpdateMany(IEnumerable<TEntity> entities)
+    public virtual int UpdateMany(IEnumerable<TEntity> entities)
     {
         _context.Set<TEntity>().UpdateRange(entities);
         return entities.Count();
     }
+
+
+    public virtual int UpdateWhere(
+        Expression<Func<TEntity, bool>> predicate,
+        Expression<Func<SetPropertyCalls<TEntity>, SetPropertyCalls<TEntity>>> setPropertyCalls
+    )
+    {
+        return _context.Set<TEntity>()
+            .Where(predicate)
+            .ExecuteUpdate(setPropertyCalls);
+    }
+
+    public virtual async Task<int> UpdateWhereAsync(
+        Expression<Func<TEntity, bool>> predicate,
+        Expression<Func<SetPropertyCalls<TEntity>, SetPropertyCalls<TEntity>>> setPropertyCalls,
+        CancellationToken token = default
+    )
+    {
+        return await _context.Set<TEntity>()
+            .Where(predicate)
+            .ExecuteUpdateAsync(setPropertyCalls, token);
+    }
+
     #endregion
 }
