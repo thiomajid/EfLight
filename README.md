@@ -163,10 +163,6 @@ public class StudentRepository : CrudRepository<Student, int>, IStudentRepositor
 
 ```
 
-```
-
-```
-
 
 ## PS
 

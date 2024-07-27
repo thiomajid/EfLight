@@ -1,11 +1,14 @@
-﻿using EfLight.Utils;
-
-using System.Linq.Expressions;
+﻿using System.Linq.Expressions;
+using LanguageExt;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Microsoft.EntityFrameworkCore.Query;
 
 namespace EfLight.Abstractions;
-public interface ICrudRepository<TEntity, TKey> : ILightRepository where TEntity : class
+
+public interface ICrudRepository<TEntity, in TKey> : ILightRepository where TEntity : class
 {
     #region Save fns
+
     /// <summary>
     /// Commits changes to the database.
     /// </summary>
@@ -18,10 +21,12 @@ public interface ICrudRepository<TEntity, TKey> : ILightRepository where TEntity
     /// </summary>
     /// <returns>The number of modified entries.</returns>
     Task<int> SaveChangesAsync();
+
     #endregion
 
 
     #region Count fns
+
     /// <summary>
     /// Counts the number of records in the <typeparamref name="TEntity"/> entity's table.
     /// </summary>
@@ -36,22 +41,27 @@ public interface ICrudRepository<TEntity, TKey> : ILightRepository where TEntity
 
     /// <summary>
     /// Counts the number of records in the <typeparamref name="TEntity"/> entity's table
-    /// fullfilling the given <paramref name="predicateFn"/>'s condition.
+    /// fulfilling the given <paramref name="predicate"/>'s condition.
     /// </summary>
-    /// <param name="predicateFn">A condition that every <typeparamref name="TEntity"/> can fullfill</param>
-    public long CountWhere(Expression<Func<TEntity, bool>> predicateFn);
+    /// <param name="predicate">A condition that every <typeparamref name="TEntity"/> can fulfill</param>
+    public long CountWhere(Expression<Func<TEntity, bool>> predicate);
 
 
     /// <summary>
     /// Counts the number of records in the <typeparamref name="TEntity"/> entity's table
-    /// fullfilling the given <paramref name="predicateFn"/>'s condition.
+    /// fulfilling the given <paramref name="predicate"/>'s condition.
     /// </summary>
-    /// <param name="predicateFn"></param>
-    public Task<long> CountWhereAsync(Expression<Func<TEntity, bool>> predicateFn, CancellationToken cancellationToken = default);
+    /// <param name="predicate"></param>
+    public Task<long> CountWhereAsync(
+        Expression<Func<TEntity, bool>> predicate,
+        CancellationToken cancellationToken = default
+    );
+
     #endregion
 
 
     #region Create fns
+
     /// <summary>
     /// Persists the given <typeparamref name="TEntity"/> entity to the database.
     /// </summary>
@@ -60,7 +70,7 @@ public interface ICrudRepository<TEntity, TKey> : ILightRepository where TEntity
     /// <strong>1</strong> if the entity has been saved. Otherwise,
     /// it will be <strong>0</strong>.
     /// </returns>
-    public int Add(TEntity entity);
+    public EntityEntry<TEntity> Add(TEntity entity);
 
 
     /// <summary>
@@ -71,7 +81,7 @@ public interface ICrudRepository<TEntity, TKey> : ILightRepository where TEntity
     /// <strong>1</strong> if the entity has been saved. Otherwise,
     /// it will be <strong>0</strong>.
     /// </returns>
-    public Task<int> AddAsync(TEntity entity, CancellationToken cancellationToken = default);
+    public Task<EntityEntry<TEntity>> AddAsync(TEntity entity, CancellationToken cancellationToken = default);
 
 
     /// <summary>
@@ -84,123 +94,132 @@ public interface ICrudRepository<TEntity, TKey> : ILightRepository where TEntity
     public int AddMany(IEnumerable<TEntity> entities);
 
 
-    //public Task<int> AddManyAsync(IEnumerable<TEntity> entities, CancellationToken cancellationToken = default);
+    public Task<int> AddManyAsync(
+        IEnumerable<TEntity> entities,
+        CancellationToken cancellationToken = default
+    );
+
     #endregion
 
 
     #region Select fns
-    /// <summary>
-    /// Finds the <typeparamref name="TEntity"/>'s having the given <paramref name="id"/>.
-    /// </summary>
-    /// <param name="id"></param>
-    public Optional<TEntity> FindById(TKey id);
-
 
     /// <summary>
     /// Finds the <typeparamref name="TEntity"/>'s having the given <paramref name="id"/>.
     /// </summary>
     /// <param name="id"></param>
-    public Task<Optional<TEntity>> FindByIdAsync(TKey id, CancellationToken cancellationToken = default);
+    public Option<TEntity> FindById(TKey id);
+
+
+    /// <summary>
+    /// Finds the <typeparamref name="TEntity"/>'s having the given <paramref name="id"/>.
+    /// </summary>
+    /// <param name="id"></param>
+    public Task<Option<TEntity>> FindByIdAsync(TKey id, CancellationToken cancellationToken = default);
 
 
     /// <summary>
     /// Finds the <strong>first</strong> <typeparamref name="TEntity"/> entity that matches
-    /// the given <paramref name="predicateFn"/>.
+    /// the given <paramref name="predicate"/>.
     /// </summary>
-    /// <param name="predicateFn"></param>
-    public Optional<TEntity> FindWhere(Expression<Func<TEntity, bool>> predicateFn);
+    /// <param name="predicate"></param>
+    public Option<TEntity> FindWhere(Expression<Func<TEntity, bool>> predicate);
 
 
     /// <summary>
     /// Finds the <strong>first</strong> <typeparamref name="TEntity"/> entity that matches
-    /// the given <paramref name="predicateFn"/>.
+    /// the given <paramref name="predicate"/>.
     /// </summary>
-    /// <param name="predicateFn"></param>
-    public Task<Optional<TEntity>> FindWhereAsync(Expression<Func<TEntity, bool>> predicateFn, CancellationToken cancellationToken = default);
+    /// <param name="predicate"></param>
+    public Task<Option<TEntity>> FindWhereAsync(
+        Expression<Func<TEntity, bool>> predicate,
+        CancellationToken cancellationToken = default
+    );
+
     #endregion
 
 
     #region Existence fns
-    /// <summary>
-    /// Checks if at least one <typeparamref name="TEntity"/> fullfills the condition of
-    /// the <paramref name="predicateFn"/>.
-    /// </summary>
-    /// <param name="predicateFn"></param>
-    public bool ExistsWhere(Expression<Func<TEntity, bool>> predicateFn);
-
 
     /// <summary>
     /// Checks if at least one <typeparamref name="TEntity"/> fullfills the condition of
-    /// the <paramref name="predicateFn"/>.
+    /// the <paramref name="predicate"/>.
     /// </summary>
-    /// <param name="predicateFn"></param>
-    public Task<bool> ExistsWhereAsync(Expression<Func<TEntity, bool>> predicateFn);
+    /// <param name="predicate"></param>
+    public bool ExistsWhere(Expression<Func<TEntity, bool>> predicate);
 
 
     /// <summary>
-    /// Checks if all <see cref="TEntity"/> fullfills the given <paramref name="predicateFn"/>
+    /// Checks if at least one <typeparamref name="TEntity"/> fullfills the condition of
+    /// the <paramref name="predicate"/>.
     /// </summary>
-    /// <param name="predicateFn"></param>
-    public bool AllAre(Expression<Func<TEntity, bool>> predicateFn);
+    /// <param name="predicate"></param>
+    public Task<bool> ExistsWhereAsync(Expression<Func<TEntity, bool>> predicate);
 
 
     /// <summary>
-    /// Checks if all <see cref="TEntity"/> fullfills the given <paramref name="predicateFn"/>
+    /// Checks if all <see cref="TEntity"/> fullfills the given <paramref name="predicate"/>
     /// </summary>
-    /// <param name="predicateFn"></param>
-    public Task<bool> AllAreAsync(Expression<Func<TEntity, bool>> predicateFn);
+    /// <param name="predicate"></param>
+    public bool AllAre(Expression<Func<TEntity, bool>> predicate);
+
+
+    /// <summary>
+    /// Checks if all <see cref="TEntity"/> fullfills the given <paramref name="predicate"/>
+    /// </summary>
+    /// <param name="predicate"></param>
+    public Task<bool> AllAreAsync(Expression<Func<TEntity, bool>> predicate);
+
     #endregion
 
 
     #region Delete fns
-    /// <summary>
-    /// Deletes a given <typeparamref name="TEntity"/> entity based on its <paramref name="id"/>.
-    /// </summary>
-    /// <param name="id"></param>
-    /// <returns>
-    /// <strong>1</strong> if the <typeparamref name="TEntity"/> entity has been removed.
-    /// Otherwise, it will throw a <see cref="NullReferenceException"/>
-    /// </returns>
-    /// <exception cref="NullReferenceException">
-    /// Thrown if no entry matches the given <paramref name="id"/>
-    /// </exception>
-    public int DeleteById(TKey id);
-
 
     /// <summary>
     /// Deletes a given <typeparamref name="TEntity"/> entity based on its <paramref name="id"/>.
     /// </summary>
     /// <param name="id"></param>
-    /// <returns>
-    /// <strong>1</strong> if the <typeparamref name="TEntity"/> entity has been removed.
-    /// Otherwise, it will throw a <see cref="NullReferenceException"/>
-    /// </returns>
     /// <exception cref="NullReferenceException">
     /// Thrown if no entry matches the given <paramref name="id"/>
     /// </exception>
-    public Task<int> DeleteByIdAsync(TKey id, CancellationToken cancellationToken = default);
+    public EntityEntry<TEntity> DeleteById(TKey id);
 
 
     /// <summary>
-    /// Deletes one or more <typeparamref name="TEntity"/> entities based on the <paramref name="predicateFn"/>.
+    /// Deletes a given <typeparamref name="TEntity"/> entity based on its <paramref name="id"/>.
     /// </summary>
-    /// <param name="predicateFn"></param>
-    /// <returns>The number of removed rows.</returns>
-    /// <exception cref="NullReferenceException"></exception>
-    public int DeleteWhere(Expression<Func<TEntity, bool>> predicateFn);
+    /// <param name="id"></param>
+    /// <exception cref="NullReferenceException">
+    /// Thrown if no entry matches the given <paramref name="id"/>
+    /// </exception>
+    public Task<EntityEntry<TEntity>> DeleteByIdAsync(TKey id, CancellationToken cancellationToken = default);
 
 
     /// <summary>
-    /// Deletes one or more <typeparamref name="TEntity"/> entities based on the <paramref name="predicateFn"/>.
+    /// Deletes one or more <typeparamref name="TEntity"/> entities based on the <paramref name="predicate"/>.
     /// </summary>
-    /// <param name="predicateFn"></param>
+    /// <param name="predicate"></param>
     /// <returns>The number of removed rows.</returns>
     /// <exception cref="NullReferenceException"></exception>
-    public Task<int> DeleteWhereAsync(Expression<Func<TEntity, bool>> predicateFn, CancellationToken cancellationToken = default);
+    public int DeleteWhere(Expression<Func<TEntity, bool>> predicate);
+
+
+    /// <summary>
+    /// Deletes one or more <typeparamref name="TEntity"/> entities based on the <paramref name="predicate"/>.
+    /// </summary>
+    /// <param name="predicate"></param>
+    /// <returns>The number of removed rows.</returns>
+    /// <exception cref="NullReferenceException"></exception>
+    public Task<int> DeleteWhereAsync(
+        Expression<Func<TEntity, bool>> predicate,
+        CancellationToken cancellationToken = default
+    );
+
     #endregion
 
 
     #region Update fns
+
     /// <summary>
     /// Updates data related to <typeparamref name="TEntity"/>'s entity.
     /// </summary>
@@ -214,5 +233,17 @@ public interface ICrudRepository<TEntity, TKey> : ILightRepository where TEntity
     /// <param name="entities"></param>
     /// <returns></returns>
     public int UpdateMany(IEnumerable<TEntity> entities);
+
+    int UpdateWhere(
+        Expression<Func<TEntity, bool>> predicate,
+        Expression<Func<SetPropertyCalls<TEntity>, SetPropertyCalls<TEntity>>> setPropertyCalls
+    );
+
+    Task<int> UpdateWhereAsync(
+        Expression<Func<TEntity, bool>> predicate,
+        Expression<Func<SetPropertyCalls<TEntity>, SetPropertyCalls<TEntity>>> setPropertyCalls,
+        CancellationToken token = default
+    );
+
     #endregion
 }
