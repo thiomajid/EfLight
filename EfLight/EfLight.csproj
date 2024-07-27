@@ -9,9 +9,9 @@
     <PackageProjectUrl>https://eflight.netlify.app/</PackageProjectUrl>
     <Description>Utility classes to reduce boilerplate code while using EF Core.</Description>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <RepositoryUrl>https://github.com/ATOM36/EfLight</RepositoryUrl>
+    <RepositoryUrl>https://github.com/thiomajid/EfLight</RepositoryUrl>
     <PackageTags>efcore</PackageTags>
-    <Authors>Thiombiano Abdoul Majid</Authors>
+    <Authors>Abdoul Majid O. Thiombiano</Authors>
     <GenerateDocumentationFile>False</GenerateDocumentationFile>
     <SignAssembly>False</SignAssembly>
     <Version>1.1.0</Version>
@@ -42,6 +42,10 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="8.0.7" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include=".github\workflows\publish-to-nuget.yaml" />
   </ItemGroup>
 
 </Project>
