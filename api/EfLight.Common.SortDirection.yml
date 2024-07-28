@@ -1,0 +1,145 @@
+### YamlMime:ManagedReference
+items:
+- uid: EfLight.Common.SortDirection
+  commentId: T:EfLight.Common.SortDirection
+  id: SortDirection
+  parent: EfLight.Common
+  children:
+  - EfLight.Common.SortDirection.Ascending
+  - EfLight.Common.SortDirection.Descending
+  langs:
+  - csharp
+  - vb
+  name: SortDirection
+  nameWithType: SortDirection
+  fullName: EfLight.Common.SortDirection
+  type: Enum
+  source:
+    remote:
+      path: EfLight/Common/SortDirection.cs
+      branch: main
+      repo: https://github.com/thiomajid/EfLight.git
+    id: SortDirection
+    path: EfLight/Common/SortDirection.cs
+    startLine: 7
+  assemblies:
+  - EfLight
+  namespace: EfLight.Common
+  summary: Defines the sort direction when using methods from <xref href="EfLight.Abstractions.IPagingAndSortingRepository%602" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public enum SortDirection
+    content.vb: Public Enum SortDirection
+- uid: EfLight.Common.SortDirection.Ascending
+  commentId: F:EfLight.Common.SortDirection.Ascending
+  id: Ascending
+  parent: EfLight.Common.SortDirection
+  langs:
+  - csharp
+  - vb
+  name: Ascending
+  nameWithType: SortDirection.Ascending
+  fullName: EfLight.Common.SortDirection.Ascending
+  type: Field
+  source:
+    remote:
+      path: EfLight/Common/SortDirection.cs
+      branch: main
+      repo: https://github.com/thiomajid/EfLight.git
+    id: Ascending
+    path: EfLight/Common/SortDirection.cs
+    startLine: 9
+  assemblies:
+  - EfLight
+  namespace: EfLight.Common
+  syntax:
+    content: Ascending = 0
+    return:
+      type: EfLight.Common.SortDirection
+- uid: EfLight.Common.SortDirection.Descending
+  commentId: F:EfLight.Common.SortDirection.Descending
+  id: Descending
+  parent: EfLight.Common.SortDirection
+  langs:
+  - csharp
+  - vb
+  name: Descending
+  nameWithType: SortDirection.Descending
+  fullName: EfLight.Common.SortDirection.Descending
+  type: Field
+  source:
+    remote:
+      path: EfLight/Common/SortDirection.cs
+      branch: main
+      repo: https://github.com/thiomajid/EfLight.git
+    id: Descending
+    path: EfLight/Common/SortDirection.cs
+    startLine: 10
+  assemblies:
+  - EfLight
+  namespace: EfLight.Common
+  syntax:
+    content: Descending = 1
+    return:
+      type: EfLight.Common.SortDirection
+references:
+- uid: EfLight.Abstractions.IPagingAndSortingRepository`2
+  commentId: T:EfLight.Abstractions.IPagingAndSortingRepository`2
+  href: EfLight.Abstractions.IPagingAndSortingRepository-2.html
+  name: IPagingAndSortingRepository<TEntity, TKey>
+  nameWithType: IPagingAndSortingRepository<TEntity, TKey>
+  fullName: EfLight.Abstractions.IPagingAndSortingRepository<TEntity, TKey>
+  nameWithType.vb: IPagingAndSortingRepository(Of TEntity, TKey)
+  fullName.vb: EfLight.Abstractions.IPagingAndSortingRepository(Of TEntity, TKey)
+  name.vb: IPagingAndSortingRepository(Of TEntity, TKey)
+  spec.csharp:
+  - uid: EfLight.Abstractions.IPagingAndSortingRepository`2
+    name: IPagingAndSortingRepository
+    href: EfLight.Abstractions.IPagingAndSortingRepository-2.html
+  - name: <
+  - name: TEntity
+  - name: ','
+  - name: " "
+  - name: TKey
+  - name: '>'
+  spec.vb:
+  - uid: EfLight.Abstractions.IPagingAndSortingRepository`2
+    name: IPagingAndSortingRepository
+    href: EfLight.Abstractions.IPagingAndSortingRepository-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEntity
+  - name: ','
+  - name: " "
+  - name: TKey
+  - name: )
+- uid: EfLight.Common
+  commentId: N:EfLight.Common
+  href: EfLight.html
+  name: EfLight.Common
+  nameWithType: EfLight.Common
+  fullName: EfLight.Common
+  spec.csharp:
+  - uid: EfLight
+    name: EfLight
+    href: EfLight.html
+  - name: .
+  - uid: EfLight.Common
+    name: Common
+    href: EfLight.Common.html
+  spec.vb:
+  - uid: EfLight
+    name: EfLight
+    href: EfLight.html
+  - name: .
+  - uid: EfLight.Common
+    name: Common
+    href: EfLight.Common.html
+- uid: EfLight.Common.SortDirection
+  commentId: T:EfLight.Common.SortDirection
+  parent: EfLight.Common
+  href: EfLight.Common.SortDirection.html
+  name: SortDirection
+  nameWithType: SortDirection
+  fullName: EfLight.Common.SortDirection

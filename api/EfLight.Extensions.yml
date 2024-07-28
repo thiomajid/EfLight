@@ -4,9 +4,8 @@ items:
   commentId: N:EfLight.Extensions
   id: EfLight.Extensions
   children:
-  - EfLight.Extensions.EfLightOptions
   - EfLight.Extensions.Object
-  - EfLight.Extensions.ServicesCollectionExtensions
+  - EfLight.Extensions.ServicesCollection
   langs:
   - csharp
   - vb
@@ -17,12 +16,6 @@ items:
   assemblies:
   - EfLight
 references:
-- uid: EfLight.Extensions.EfLightOptions
-  commentId: T:EfLight.Extensions.EfLightOptions
-  href: EfLight.Extensions.EfLightOptions.html
-  name: EfLightOptions
-  nameWithType: EfLightOptions
-  fullName: EfLight.Extensions.EfLightOptions
 - uid: EfLight.Extensions.Object
   commentId: T:EfLight.Extensions.Object
   parent: EfLight.Extensions
@@ -30,12 +23,12 @@ references:
   name: Object
   nameWithType: Object
   fullName: EfLight.Extensions.Object
-- uid: EfLight.Extensions.ServicesCollectionExtensions
-  commentId: T:EfLight.Extensions.ServicesCollectionExtensions
-  href: EfLight.Extensions.ServicesCollectionExtensions.html
-  name: ServicesCollectionExtensions
-  nameWithType: ServicesCollectionExtensions
-  fullName: EfLight.Extensions.ServicesCollectionExtensions
+- uid: EfLight.Extensions.ServicesCollection
+  commentId: T:EfLight.Extensions.ServicesCollection
+  href: EfLight.Extensions.ServicesCollection.html
+  name: ServicesCollection
+  nameWithType: ServicesCollection
+  fullName: EfLight.Extensions.ServicesCollection
 - uid: EfLight.Extensions
   commentId: N:EfLight.Extensions
   href: EfLight.html

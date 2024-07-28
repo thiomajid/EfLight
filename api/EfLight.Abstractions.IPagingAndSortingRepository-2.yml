@@ -11,10 +11,10 @@ items:
   - EfLight.Abstractions.IPagingAndSortingRepository`2.FindAllAsync(EfLight.Common.PaginationRequest,System.Boolean,System.Threading.CancellationToken)
   - EfLight.Abstractions.IPagingAndSortingRepository`2.FindAllAsync(EfLight.Common.PaginationRequest,System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Boolean,System.Threading.CancellationToken)
   - EfLight.Abstractions.IPagingAndSortingRepository`2.FindAllAsync(System.Boolean,System.Threading.CancellationToken)
-  - EfLight.Abstractions.IPagingAndSortingRepository`2.FindAllAsync``1(EfLight.Common.PaginationRequest,System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,``0}},EfLight.Utils.SortDirection,System.Boolean,System.Threading.CancellationToken)
-  - EfLight.Abstractions.IPagingAndSortingRepository`2.FindAllAsync``1(EfLight.Common.PaginationRequest,System.Linq.Expressions.Expression{System.Func{`0,``0}},EfLight.Utils.SortDirection,System.Boolean,System.Threading.CancellationToken)
-  - EfLight.Abstractions.IPagingAndSortingRepository`2.FindAll``1(EfLight.Common.PaginationRequest,System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,``0}},EfLight.Utils.SortDirection,System.Boolean)
-  - EfLight.Abstractions.IPagingAndSortingRepository`2.FindAll``1(EfLight.Common.PaginationRequest,System.Linq.Expressions.Expression{System.Func{`0,``0}},EfLight.Utils.SortDirection,System.Boolean)
+  - EfLight.Abstractions.IPagingAndSortingRepository`2.FindAllAsync``1(EfLight.Common.PaginationRequest,System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,``0}},EfLight.Common.SortDirection,System.Boolean,System.Threading.CancellationToken)
+  - EfLight.Abstractions.IPagingAndSortingRepository`2.FindAllAsync``1(EfLight.Common.PaginationRequest,System.Linq.Expressions.Expression{System.Func{`0,``0}},EfLight.Common.SortDirection,System.Boolean,System.Threading.CancellationToken)
+  - EfLight.Abstractions.IPagingAndSortingRepository`2.FindAll``1(EfLight.Common.PaginationRequest,System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,``0}},EfLight.Common.SortDirection,System.Boolean)
+  - EfLight.Abstractions.IPagingAndSortingRepository`2.FindAll``1(EfLight.Common.PaginationRequest,System.Linq.Expressions.Expression{System.Func{`0,``0}},EfLight.Common.SortDirection,System.Boolean)
   langs:
   - csharp
   - vb
@@ -29,7 +29,7 @@ items:
       repo: https://github.com/thiomajid/EfLight.git
     id: IPagingAndSortingRepository
     path: EfLight/Abstractions/IPagingAndSortingRepository.cs
-    startLine: 6
+    startLine: 5
   assemblies:
   - EfLight
   namespace: EfLight.Abstractions
@@ -89,7 +89,7 @@ items:
       repo: https://github.com/thiomajid/EfLight.git
     id: FindAll
     path: EfLight/Abstractions/IPagingAndSortingRepository.cs
-    startLine: 12
+    startLine: 11
   assemblies:
   - EfLight
   namespace: EfLight.Abstractions
@@ -125,7 +125,7 @@ items:
       repo: https://github.com/thiomajid/EfLight.git
     id: FindAll
     path: EfLight/Abstractions/IPagingAndSortingRepository.cs
-    startLine: 18
+    startLine: 17
   assemblies:
   - EfLight
   namespace: EfLight.Abstractions
@@ -163,7 +163,7 @@ items:
       repo: https://github.com/thiomajid/EfLight.git
     id: FindAll
     path: EfLight/Abstractions/IPagingAndSortingRepository.cs
-    startLine: 27
+    startLine: 26
   assemblies:
   - EfLight
   namespace: EfLight.Abstractions
@@ -188,16 +188,16 @@ items:
   nameWithType.vb: IPagingAndSortingRepository(Of TEntity, TKey).FindAll(PaginationRequest, Expression(Of Func(Of TEntity, Boolean)), Boolean)
   fullName.vb: EfLight.Abstractions.IPagingAndSortingRepository(Of TEntity, TKey).FindAll(EfLight.Common.PaginationRequest, System.Linq.Expressions.Expression(Of System.Func(Of TEntity, Boolean)), Boolean)
   name.vb: FindAll(PaginationRequest, Expression(Of Func(Of TEntity, Boolean)), Boolean)
-- uid: EfLight.Abstractions.IPagingAndSortingRepository`2.FindAll``1(EfLight.Common.PaginationRequest,System.Linq.Expressions.Expression{System.Func{`0,``0}},EfLight.Utils.SortDirection,System.Boolean)
-  commentId: M:EfLight.Abstractions.IPagingAndSortingRepository`2.FindAll``1(EfLight.Common.PaginationRequest,System.Linq.Expressions.Expression{System.Func{`0,``0}},EfLight.Utils.SortDirection,System.Boolean)
-  id: FindAll``1(EfLight.Common.PaginationRequest,System.Linq.Expressions.Expression{System.Func{`0,``0}},EfLight.Utils.SortDirection,System.Boolean)
+- uid: EfLight.Abstractions.IPagingAndSortingRepository`2.FindAll``1(EfLight.Common.PaginationRequest,System.Linq.Expressions.Expression{System.Func{`0,``0}},EfLight.Common.SortDirection,System.Boolean)
+  commentId: M:EfLight.Abstractions.IPagingAndSortingRepository`2.FindAll``1(EfLight.Common.PaginationRequest,System.Linq.Expressions.Expression{System.Func{`0,``0}},EfLight.Common.SortDirection,System.Boolean)
+  id: FindAll``1(EfLight.Common.PaginationRequest,System.Linq.Expressions.Expression{System.Func{`0,``0}},EfLight.Common.SortDirection,System.Boolean)
   parent: EfLight.Abstractions.IPagingAndSortingRepository`2
   langs:
   - csharp
   - vb
   name: FindAll<TOrderKey>(PaginationRequest, Expression<Func<TEntity, TOrderKey>>, SortDirection, bool)
   nameWithType: IPagingAndSortingRepository<TEntity, TKey>.FindAll<TOrderKey>(PaginationRequest, Expression<Func<TEntity, TOrderKey>>, SortDirection, bool)
-  fullName: EfLight.Abstractions.IPagingAndSortingRepository<TEntity, TKey>.FindAll<TOrderKey>(EfLight.Common.PaginationRequest, System.Linq.Expressions.Expression<System.Func<TEntity, TOrderKey>>, EfLight.Utils.SortDirection, bool)
+  fullName: EfLight.Abstractions.IPagingAndSortingRepository<TEntity, TKey>.FindAll<TOrderKey>(EfLight.Common.PaginationRequest, System.Linq.Expressions.Expression<System.Func<TEntity, TOrderKey>>, EfLight.Common.SortDirection, bool)
   type: Method
   source:
     remote:
@@ -206,7 +206,7 @@ items:
       repo: https://github.com/thiomajid/EfLight.git
     id: FindAll
     path: EfLight/Abstractions/IPagingAndSortingRepository.cs
-    startLine: 40
+    startLine: 39
   assemblies:
   - EfLight
   namespace: EfLight.Abstractions
@@ -223,7 +223,7 @@ items:
     - id: orderKey
       type: System.Linq.Expressions.Expression{System.Func{{TEntity},{TOrderKey}}}
     - id: sort
-      type: EfLight.Utils.SortDirection
+      type: EfLight.Common.SortDirection
     - id: track
       type: System.Boolean
     typeParameters:
@@ -233,18 +233,18 @@ items:
     content.vb: Function FindAll(Of TOrderKey)(page As PaginationRequest, orderKey As Expression(Of Func(Of TEntity, TOrderKey)), sort As SortDirection = SortDirection.Ascending, track As Boolean = False) As IEnumerable(Of TEntity)
   overload: EfLight.Abstractions.IPagingAndSortingRepository`2.FindAll*
   nameWithType.vb: IPagingAndSortingRepository(Of TEntity, TKey).FindAll(Of TOrderKey)(PaginationRequest, Expression(Of Func(Of TEntity, TOrderKey)), SortDirection, Boolean)
-  fullName.vb: EfLight.Abstractions.IPagingAndSortingRepository(Of TEntity, TKey).FindAll(Of TOrderKey)(EfLight.Common.PaginationRequest, System.Linq.Expressions.Expression(Of System.Func(Of TEntity, TOrderKey)), EfLight.Utils.SortDirection, Boolean)
+  fullName.vb: EfLight.Abstractions.IPagingAndSortingRepository(Of TEntity, TKey).FindAll(Of TOrderKey)(EfLight.Common.PaginationRequest, System.Linq.Expressions.Expression(Of System.Func(Of TEntity, TOrderKey)), EfLight.Common.SortDirection, Boolean)
   name.vb: FindAll(Of TOrderKey)(PaginationRequest, Expression(Of Func(Of TEntity, TOrderKey)), SortDirection, Boolean)
-- uid: EfLight.Abstractions.IPagingAndSortingRepository`2.FindAll``1(EfLight.Common.PaginationRequest,System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,``0}},EfLight.Utils.SortDirection,System.Boolean)
-  commentId: M:EfLight.Abstractions.IPagingAndSortingRepository`2.FindAll``1(EfLight.Common.PaginationRequest,System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,``0}},EfLight.Utils.SortDirection,System.Boolean)
-  id: FindAll``1(EfLight.Common.PaginationRequest,System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,``0}},EfLight.Utils.SortDirection,System.Boolean)
+- uid: EfLight.Abstractions.IPagingAndSortingRepository`2.FindAll``1(EfLight.Common.PaginationRequest,System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,``0}},EfLight.Common.SortDirection,System.Boolean)
+  commentId: M:EfLight.Abstractions.IPagingAndSortingRepository`2.FindAll``1(EfLight.Common.PaginationRequest,System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,``0}},EfLight.Common.SortDirection,System.Boolean)
+  id: FindAll``1(EfLight.Common.PaginationRequest,System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,``0}},EfLight.Common.SortDirection,System.Boolean)
   parent: EfLight.Abstractions.IPagingAndSortingRepository`2
   langs:
   - csharp
   - vb
   name: FindAll<TOrderKey>(PaginationRequest, Expression<Func<TEntity, bool>>, Expression<Func<TEntity, TOrderKey>>, SortDirection, bool)
   nameWithType: IPagingAndSortingRepository<TEntity, TKey>.FindAll<TOrderKey>(PaginationRequest, Expression<Func<TEntity, bool>>, Expression<Func<TEntity, TOrderKey>>, SortDirection, bool)
-  fullName: EfLight.Abstractions.IPagingAndSortingRepository<TEntity, TKey>.FindAll<TOrderKey>(EfLight.Common.PaginationRequest, System.Linq.Expressions.Expression<System.Func<TEntity, bool>>, System.Linq.Expressions.Expression<System.Func<TEntity, TOrderKey>>, EfLight.Utils.SortDirection, bool)
+  fullName: EfLight.Abstractions.IPagingAndSortingRepository<TEntity, TKey>.FindAll<TOrderKey>(EfLight.Common.PaginationRequest, System.Linq.Expressions.Expression<System.Func<TEntity, bool>>, System.Linq.Expressions.Expression<System.Func<TEntity, TOrderKey>>, EfLight.Common.SortDirection, bool)
   type: Method
   source:
     remote:
@@ -253,7 +253,7 @@ items:
       repo: https://github.com/thiomajid/EfLight.git
     id: FindAll
     path: EfLight/Abstractions/IPagingAndSortingRepository.cs
-    startLine: 54
+    startLine: 53
   assemblies:
   - EfLight
   namespace: EfLight.Abstractions
@@ -272,7 +272,7 @@ items:
     - id: orderKey
       type: System.Linq.Expressions.Expression{System.Func{{TEntity},{TOrderKey}}}
     - id: sort
-      type: EfLight.Utils.SortDirection
+      type: EfLight.Common.SortDirection
     - id: track
       type: System.Boolean
     typeParameters:
@@ -282,7 +282,7 @@ items:
     content.vb: Function FindAll(Of TOrderKey)(page As PaginationRequest, predicateFn As Expression(Of Func(Of TEntity, Boolean)), orderKey As Expression(Of Func(Of TEntity, TOrderKey)), sort As SortDirection = SortDirection.Ascending, track As Boolean = False) As IEnumerable(Of TEntity)
   overload: EfLight.Abstractions.IPagingAndSortingRepository`2.FindAll*
   nameWithType.vb: IPagingAndSortingRepository(Of TEntity, TKey).FindAll(Of TOrderKey)(PaginationRequest, Expression(Of Func(Of TEntity, Boolean)), Expression(Of Func(Of TEntity, TOrderKey)), SortDirection, Boolean)
-  fullName.vb: EfLight.Abstractions.IPagingAndSortingRepository(Of TEntity, TKey).FindAll(Of TOrderKey)(EfLight.Common.PaginationRequest, System.Linq.Expressions.Expression(Of System.Func(Of TEntity, Boolean)), System.Linq.Expressions.Expression(Of System.Func(Of TEntity, TOrderKey)), EfLight.Utils.SortDirection, Boolean)
+  fullName.vb: EfLight.Abstractions.IPagingAndSortingRepository(Of TEntity, TKey).FindAll(Of TOrderKey)(EfLight.Common.PaginationRequest, System.Linq.Expressions.Expression(Of System.Func(Of TEntity, Boolean)), System.Linq.Expressions.Expression(Of System.Func(Of TEntity, TOrderKey)), EfLight.Common.SortDirection, Boolean)
   name.vb: FindAll(Of TOrderKey)(PaginationRequest, Expression(Of Func(Of TEntity, Boolean)), Expression(Of Func(Of TEntity, TOrderKey)), SortDirection, Boolean)
 - uid: EfLight.Abstractions.IPagingAndSortingRepository`2.FindAllAsync(System.Boolean,System.Threading.CancellationToken)
   commentId: M:EfLight.Abstractions.IPagingAndSortingRepository`2.FindAllAsync(System.Boolean,System.Threading.CancellationToken)
@@ -302,7 +302,7 @@ items:
       repo: https://github.com/thiomajid/EfLight.git
     id: FindAllAsync
     path: EfLight/Abstractions/IPagingAndSortingRepository.cs
-    startLine: 65
+    startLine: 64
   assemblies:
   - EfLight
   namespace: EfLight.Abstractions
@@ -340,7 +340,7 @@ items:
       repo: https://github.com/thiomajid/EfLight.git
     id: FindAllAsync
     path: EfLight/Abstractions/IPagingAndSortingRepository.cs
-    startLine: 71
+    startLine: 70
   assemblies:
   - EfLight
   namespace: EfLight.Abstractions
@@ -383,7 +383,7 @@ items:
       repo: https://github.com/thiomajid/EfLight.git
     id: FindAllAsync
     path: EfLight/Abstractions/IPagingAndSortingRepository.cs
-    startLine: 84
+    startLine: 83
   assemblies:
   - EfLight
   namespace: EfLight.Abstractions
@@ -410,16 +410,16 @@ items:
   nameWithType.vb: IPagingAndSortingRepository(Of TEntity, TKey).FindAllAsync(PaginationRequest, Expression(Of Func(Of TEntity, Boolean)), Boolean, CancellationToken)
   fullName.vb: EfLight.Abstractions.IPagingAndSortingRepository(Of TEntity, TKey).FindAllAsync(EfLight.Common.PaginationRequest, System.Linq.Expressions.Expression(Of System.Func(Of TEntity, Boolean)), Boolean, System.Threading.CancellationToken)
   name.vb: FindAllAsync(PaginationRequest, Expression(Of Func(Of TEntity, Boolean)), Boolean, CancellationToken)
-- uid: EfLight.Abstractions.IPagingAndSortingRepository`2.FindAllAsync``1(EfLight.Common.PaginationRequest,System.Linq.Expressions.Expression{System.Func{`0,``0}},EfLight.Utils.SortDirection,System.Boolean,System.Threading.CancellationToken)
-  commentId: M:EfLight.Abstractions.IPagingAndSortingRepository`2.FindAllAsync``1(EfLight.Common.PaginationRequest,System.Linq.Expressions.Expression{System.Func{`0,``0}},EfLight.Utils.SortDirection,System.Boolean,System.Threading.CancellationToken)
-  id: FindAllAsync``1(EfLight.Common.PaginationRequest,System.Linq.Expressions.Expression{System.Func{`0,``0}},EfLight.Utils.SortDirection,System.Boolean,System.Threading.CancellationToken)
+- uid: EfLight.Abstractions.IPagingAndSortingRepository`2.FindAllAsync``1(EfLight.Common.PaginationRequest,System.Linq.Expressions.Expression{System.Func{`0,``0}},EfLight.Common.SortDirection,System.Boolean,System.Threading.CancellationToken)
+  commentId: M:EfLight.Abstractions.IPagingAndSortingRepository`2.FindAllAsync``1(EfLight.Common.PaginationRequest,System.Linq.Expressions.Expression{System.Func{`0,``0}},EfLight.Common.SortDirection,System.Boolean,System.Threading.CancellationToken)
+  id: FindAllAsync``1(EfLight.Common.PaginationRequest,System.Linq.Expressions.Expression{System.Func{`0,``0}},EfLight.Common.SortDirection,System.Boolean,System.Threading.CancellationToken)
   parent: EfLight.Abstractions.IPagingAndSortingRepository`2
   langs:
   - csharp
   - vb
   name: FindAllAsync<TOrderKey>(PaginationRequest, Expression<Func<TEntity, TOrderKey>>, SortDirection, bool, CancellationToken)
   nameWithType: IPagingAndSortingRepository<TEntity, TKey>.FindAllAsync<TOrderKey>(PaginationRequest, Expression<Func<TEntity, TOrderKey>>, SortDirection, bool, CancellationToken)
-  fullName: EfLight.Abstractions.IPagingAndSortingRepository<TEntity, TKey>.FindAllAsync<TOrderKey>(EfLight.Common.PaginationRequest, System.Linq.Expressions.Expression<System.Func<TEntity, TOrderKey>>, EfLight.Utils.SortDirection, bool, System.Threading.CancellationToken)
+  fullName: EfLight.Abstractions.IPagingAndSortingRepository<TEntity, TKey>.FindAllAsync<TOrderKey>(EfLight.Common.PaginationRequest, System.Linq.Expressions.Expression<System.Func<TEntity, TOrderKey>>, EfLight.Common.SortDirection, bool, System.Threading.CancellationToken)
   type: Method
   source:
     remote:
@@ -428,7 +428,7 @@ items:
       repo: https://github.com/thiomajid/EfLight.git
     id: FindAllAsync
     path: EfLight/Abstractions/IPagingAndSortingRepository.cs
-    startLine: 97
+    startLine: 96
   assemblies:
   - EfLight
   namespace: EfLight.Abstractions
@@ -445,7 +445,7 @@ items:
     - id: orderKey
       type: System.Linq.Expressions.Expression{System.Func{{TEntity},{TOrderKey}}}
     - id: sort
-      type: EfLight.Utils.SortDirection
+      type: EfLight.Common.SortDirection
     - id: track
       type: System.Boolean
     - id: cancellationToken
@@ -457,18 +457,18 @@ items:
     content.vb: Function FindAllAsync(Of TOrderKey)(page As PaginationRequest, orderKey As Expression(Of Func(Of TEntity, TOrderKey)), sort As SortDirection = SortDirection.Ascending, track As Boolean = False, cancellationToken As CancellationToken = Nothing) As Task(Of IEnumerable(Of TEntity))
   overload: EfLight.Abstractions.IPagingAndSortingRepository`2.FindAllAsync*
   nameWithType.vb: IPagingAndSortingRepository(Of TEntity, TKey).FindAllAsync(Of TOrderKey)(PaginationRequest, Expression(Of Func(Of TEntity, TOrderKey)), SortDirection, Boolean, CancellationToken)
-  fullName.vb: EfLight.Abstractions.IPagingAndSortingRepository(Of TEntity, TKey).FindAllAsync(Of TOrderKey)(EfLight.Common.PaginationRequest, System.Linq.Expressions.Expression(Of System.Func(Of TEntity, TOrderKey)), EfLight.Utils.SortDirection, Boolean, System.Threading.CancellationToken)
+  fullName.vb: EfLight.Abstractions.IPagingAndSortingRepository(Of TEntity, TKey).FindAllAsync(Of TOrderKey)(EfLight.Common.PaginationRequest, System.Linq.Expressions.Expression(Of System.Func(Of TEntity, TOrderKey)), EfLight.Common.SortDirection, Boolean, System.Threading.CancellationToken)
   name.vb: FindAllAsync(Of TOrderKey)(PaginationRequest, Expression(Of Func(Of TEntity, TOrderKey)), SortDirection, Boolean, CancellationToken)
-- uid: EfLight.Abstractions.IPagingAndSortingRepository`2.FindAllAsync``1(EfLight.Common.PaginationRequest,System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,``0}},EfLight.Utils.SortDirection,System.Boolean,System.Threading.CancellationToken)
-  commentId: M:EfLight.Abstractions.IPagingAndSortingRepository`2.FindAllAsync``1(EfLight.Common.PaginationRequest,System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,``0}},EfLight.Utils.SortDirection,System.Boolean,System.Threading.CancellationToken)
-  id: FindAllAsync``1(EfLight.Common.PaginationRequest,System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,``0}},EfLight.Utils.SortDirection,System.Boolean,System.Threading.CancellationToken)
+- uid: EfLight.Abstractions.IPagingAndSortingRepository`2.FindAllAsync``1(EfLight.Common.PaginationRequest,System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,``0}},EfLight.Common.SortDirection,System.Boolean,System.Threading.CancellationToken)
+  commentId: M:EfLight.Abstractions.IPagingAndSortingRepository`2.FindAllAsync``1(EfLight.Common.PaginationRequest,System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,``0}},EfLight.Common.SortDirection,System.Boolean,System.Threading.CancellationToken)
+  id: FindAllAsync``1(EfLight.Common.PaginationRequest,System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,``0}},EfLight.Common.SortDirection,System.Boolean,System.Threading.CancellationToken)
   parent: EfLight.Abstractions.IPagingAndSortingRepository`2
   langs:
   - csharp
   - vb
   name: FindAllAsync<TOrderKey>(PaginationRequest, Expression<Func<TEntity, bool>>, Expression<Func<TEntity, TOrderKey>>, SortDirection, bool, CancellationToken)
   nameWithType: IPagingAndSortingRepository<TEntity, TKey>.FindAllAsync<TOrderKey>(PaginationRequest, Expression<Func<TEntity, bool>>, Expression<Func<TEntity, TOrderKey>>, SortDirection, bool, CancellationToken)
-  fullName: EfLight.Abstractions.IPagingAndSortingRepository<TEntity, TKey>.FindAllAsync<TOrderKey>(EfLight.Common.PaginationRequest, System.Linq.Expressions.Expression<System.Func<TEntity, bool>>, System.Linq.Expressions.Expression<System.Func<TEntity, TOrderKey>>, EfLight.Utils.SortDirection, bool, System.Threading.CancellationToken)
+  fullName: EfLight.Abstractions.IPagingAndSortingRepository<TEntity, TKey>.FindAllAsync<TOrderKey>(EfLight.Common.PaginationRequest, System.Linq.Expressions.Expression<System.Func<TEntity, bool>>, System.Linq.Expressions.Expression<System.Func<TEntity, TOrderKey>>, EfLight.Common.SortDirection, bool, System.Threading.CancellationToken)
   type: Method
   source:
     remote:
@@ -477,7 +477,7 @@ items:
       repo: https://github.com/thiomajid/EfLight.git
     id: FindAllAsync
     path: EfLight/Abstractions/IPagingAndSortingRepository.cs
-    startLine: 112
+    startLine: 111
   assemblies:
   - EfLight
   namespace: EfLight.Abstractions
@@ -496,7 +496,7 @@ items:
     - id: orderKey
       type: System.Linq.Expressions.Expression{System.Func{{TEntity},{TOrderKey}}}
     - id: sort
-      type: EfLight.Utils.SortDirection
+      type: EfLight.Common.SortDirection
     - id: track
       type: System.Boolean
     - id: cancellationToken
@@ -508,7 +508,7 @@ items:
     content.vb: Function FindAllAsync(Of TOrderKey)(page As PaginationRequest, predicateFn As Expression(Of Func(Of TEntity, Boolean)), orderKey As Expression(Of Func(Of TEntity, TOrderKey)), sort As SortDirection = SortDirection.Ascending, track As Boolean = False, cancellationToken As CancellationToken = Nothing) As Task(Of IEnumerable(Of TEntity))
   overload: EfLight.Abstractions.IPagingAndSortingRepository`2.FindAllAsync*
   nameWithType.vb: IPagingAndSortingRepository(Of TEntity, TKey).FindAllAsync(Of TOrderKey)(PaginationRequest, Expression(Of Func(Of TEntity, Boolean)), Expression(Of Func(Of TEntity, TOrderKey)), SortDirection, Boolean, CancellationToken)
-  fullName.vb: EfLight.Abstractions.IPagingAndSortingRepository(Of TEntity, TKey).FindAllAsync(Of TOrderKey)(EfLight.Common.PaginationRequest, System.Linq.Expressions.Expression(Of System.Func(Of TEntity, Boolean)), System.Linq.Expressions.Expression(Of System.Func(Of TEntity, TOrderKey)), EfLight.Utils.SortDirection, Boolean, System.Threading.CancellationToken)
+  fullName.vb: EfLight.Abstractions.IPagingAndSortingRepository(Of TEntity, TKey).FindAllAsync(Of TOrderKey)(EfLight.Common.PaginationRequest, System.Linq.Expressions.Expression(Of System.Func(Of TEntity, Boolean)), System.Linq.Expressions.Expression(Of System.Func(Of TEntity, TOrderKey)), EfLight.Common.SortDirection, Boolean, System.Threading.CancellationToken)
   name.vb: FindAllAsync(Of TOrderKey)(PaginationRequest, Expression(Of Func(Of TEntity, Boolean)), Expression(Of Func(Of TEntity, TOrderKey)), SortDirection, Boolean, CancellationToken)
 references:
 - uid: EfLight.Abstractions
@@ -3797,35 +3797,13 @@ references:
   - name: TOrderKey
   - name: )
   - name: )
-- uid: EfLight.Utils.SortDirection
-  commentId: T:EfLight.Utils.SortDirection
-  parent: EfLight.Utils
-  href: EfLight.Utils.SortDirection.html
+- uid: EfLight.Common.SortDirection
+  commentId: T:EfLight.Common.SortDirection
+  parent: EfLight.Common
+  href: EfLight.Common.SortDirection.html
   name: SortDirection
   nameWithType: SortDirection
-  fullName: EfLight.Utils.SortDirection
-- uid: EfLight.Utils
-  commentId: N:EfLight.Utils
-  href: EfLight.html
-  name: EfLight.Utils
-  nameWithType: EfLight.Utils
-  fullName: EfLight.Utils
-  spec.csharp:
-  - uid: EfLight
-    name: EfLight
-    href: EfLight.html
-  - name: .
-  - uid: EfLight.Utils
-    name: Utils
-    href: EfLight.Utils.html
-  spec.vb:
-  - uid: EfLight
-    name: EfLight
-    href: EfLight.html
-  - name: .
-  - uid: EfLight.Utils
-    name: Utils
-    href: EfLight.Utils.html
+  fullName: EfLight.Common.SortDirection
 - uid: EfLight.Abstractions.IPagingAndSortingRepository`2.FindAllAsync*
   commentId: Overload:EfLight.Abstractions.IPagingAndSortingRepository`2.FindAllAsync
   href: EfLight.Abstractions.IPagingAndSortingRepository-2.html#EfLight_Abstractions_IPagingAndSortingRepository_2_FindAllAsync_System_Boolean_System_Threading_CancellationToken_

@@ -107,7 +107,7 @@ public interface IStudentRepository : ICrudRepository&lt;Student, int&gt;
 }
 
 
-class StudentRepository : CrudRepository&lt;Student, int&gt;, IStudentRepository
+class StudentRepository : CrudRepository&lt;YourDbContext, Student, int&gt;, IStudentRepository
 {
     public StudentRepository(YourDbContext context) : base(context)
     {
@@ -190,7 +190,7 @@ class StudentRepository : CrudRepository&lt;Student, int&gt;, IStudentRepository
 but you can provide your default lifetime using:</p>
 <pre><code class="lang-cs">
 builder.Services.AddEfLight&lt;Program&gt;(options =&gt; {
-    options.DefaultLifetime = ServiceLifetime.SingleTransient;
+    options.DefaultLifetime = ServiceLifetime.Scoped;
 });
 
 </code></pre>
@@ -198,7 +198,7 @@ builder.Services.AddEfLight&lt;Program&gt;(options =&gt; {
 <code>RepositoryLifetime</code> attribute on the repository class:</p>
 <pre><code class="lang-cs">
 [RepositoryLifetime(ServiceLifetime.Scoped)]
-public class StudentRepository : CrudRepository&lt;Student, int&gt;, IStudentRepository
+public class StudentRepository : CrudRepository&lt;YourDbContext, Student, int&gt;, IStudentRepository
 {
     public StudentRepository(YourDbContext context) : base(context)
     {

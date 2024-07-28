@@ -29,11 +29,11 @@ items:
   example: []
   syntax:
     content: >-
-      [AttributeUsage(AttributeTargets.Class, Inherited = false, AllowMultiple = false)]
+      [AttributeUsage(AttributeTargets.Class, Inherited = false)]
 
       public sealed class RepositoryLifetimeAttribute : Attribute
     content.vb: >-
-      <AttributeUsage(AttributeTargets.Class, Inherited:=False, AllowMultiple:=False)>
+      <AttributeUsage(AttributeTargets.Class, Inherited:=False)>
 
       Public NotInheritable Class RepositoryLifetimeAttribute Inherits Attribute
   inheritance:
@@ -91,9 +91,6 @@ items:
       value: 4
     namedArguments:
     - name: Inherited
-      type: System.Boolean
-      value: false
-    - name: AllowMultiple
       type: System.Boolean
       value: false
 - uid: EfLight.Attributes.RepositoryLifetimeAttribute.Lifetime

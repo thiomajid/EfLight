@@ -92,6 +92,16 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/EfLight.Common.SortDirection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EfLight.Common.SortDirection.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/EfLight.Common.yml",
       "output": {
         ".html": {
@@ -112,6 +122,36 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/EfLight.Core.CrudRepository-3.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EfLight.Core.CrudRepository-3.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EfLight.Core.EfLightOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EfLight.Core.EfLightOptions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EfLight.Core.LightRepository-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EfLight.Core.LightRepository-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/EfLight.Core.LightRepository.yml",
       "output": {
         ".html": {
@@ -126,6 +166,16 @@
       "output": {
         ".html": {
           "relative_path": "api/EfLight.Core.PagingAndSortingRepository-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EfLight.Core.PagingAndSortingRepository-3.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EfLight.Core.PagingAndSortingRepository-3.html"
         }
       },
       "version": ""
@@ -156,6 +206,16 @@
       "output": {
         ".html": {
           "relative_path": "api/EfLight.Extensions.Object.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EfLight.Extensions.ServicesCollection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EfLight.Extensions.ServicesCollection.html"
         }
       },
       "version": ""

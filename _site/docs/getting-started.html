@@ -87,6 +87,130 @@
         <article data-uid="">
 <h1 id="getting-started">Getting Started</h1>
 
+<p>Suppose that we have an entity class named <em>Student</em> and our DbContext is already configured.</p>
+<pre><code class="lang-cs">
+[Table(&quot;Student&quot;)]
+class Student
+{
+    [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    public int Id { get; set; }
+    public string? FirstName { get; set; }
+    public string? LastName { get; set; }
+
+    [DataType(DataType.Date)]
+    public DateTime BirthDate { get; set; }
+}
+
+</code></pre>
+<p>To interact with the table, just create a <em>repository</em> class which extends whether <strong>CrudRepository</strong> or <strong>PagingAndSortingRepository</strong> (the choice depends on your requirements) with its corresponding interface that will be injected in other classes.</p>
+<pre><code class="lang-cs">
+public interface IStudentRepository : ICrudRepository&lt;Student, int&gt;
+{
+
+}
+
+
+class StudentRepository : CrudRepository&lt;YourDbContext, Student, int&gt;, IStudentRepository
+{
+    public StudentRepository(YourDbContext context) : base(context)
+    {
+
+    }
+}
+
+</code></pre>
+<p>Then in <code>Program.cs</code>, you can register all of your repositories using:</p>
+<pre><code class="lang-cs">
+builder.Services.AddEfLight&lt;Program&gt;();
+
+</code></pre>
+<h3 id="usage">Usage</h3>
+<hr>
+<p>All you have to do is to inject it where it is needed. For example:</p>
+<pre><code class="lang-cs">
+public class StudentService
+{
+   private readonly IStudentRepository _repository;
+
+   public StudentService(IStudentRepository repository)
+   {
+        _repository = repository;
+   }
+
+   public void CheckIfAllAboveAge(int age)
+   {
+       bool result =  _repository.ExistsWhere(x =&gt; x.BirthData.Year &gt; age);
+
+       // Your business logic
+   }
+
+   public Student? FindByName(string name)
+   {
+        Student? student;
+
+        Optional&lt;Student&gt; result = _repository.FindWhere(x =&gt; x.LastName == name);
+
+        // Throws the exception if the result is null
+        student = result.OrElseThrow(() =&gt; new Exception());
+
+        // Instead of throwing an exception, you can also do
+        result.IfNullThen(() =&gt; {
+            student = _repository.FindWhere(x =&gt; x.FirstName == name);
+        });
+
+        return student;
+   }
+}
+
+</code></pre>
+<h2 id="custom-queries">Custom queries</h2>
+<p>You can also provide more features to your repository classes depending on your use cases. Just use an interface defining the contract and provide your own implementation of that use case.</p>
+<pre><code class="lang-cs">
+public interface IStudentRepository : ICrudRepository&lt;Student, int&gt;
+{
+    void UpsertById(int studentId);
+}
+
+</code></pre>
+<p>In the repository class, you'll have:</p>
+<pre><code class="lang-cs">
+class StudentRepository : CrudRepository&lt;Student, int&gt;, IStudentRepository
+{
+    public StudentRepository(YourDbContext context) : base(context)
+    {
+
+    }
+
+    public void UpsertById(int studentId)
+    {
+        // Your implementation
+    }
+}
+
+</code></pre>
+<h2 id="lifetime">Lifetime</h2>
+<p>When you register your repositories, you can specify the lifetime of your repositories. By default, it is set to <code>ServiceLifetime.Scoped</code>,
+but you can provide your default lifetime using:</p>
+<pre><code class="lang-cs">
+builder.Services.AddEfLight&lt;Program&gt;(options =&gt; {
+    options.DefaultLifetime = ServiceLifetime.Scoped;
+});
+
+</code></pre>
+<p>On top of that, you can specify the lifetime of each repository using
+<code>RepositoryLifetime</code> attribute on the repository class:</p>
+<pre><code class="lang-cs">
+[RepositoryLifetime(ServiceLifetime.Scoped)]
+public class StudentRepository : CrudRepository&lt;YourDbContext, Student, int&gt;, IStudentRepository
+{
+    public StudentRepository(YourDbContext context) : base(context)
+    {
+
+    }
+}
+
+</code></pre>
 
 </article>
 

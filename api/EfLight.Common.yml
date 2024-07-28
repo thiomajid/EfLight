@@ -5,6 +5,7 @@ items:
   id: EfLight.Common
   children:
   - EfLight.Common.PaginationRequest
+  - EfLight.Common.SortDirection
   langs:
   - csharp
   - vb
@@ -22,6 +23,13 @@ references:
   name: PaginationRequest
   nameWithType: PaginationRequest
   fullName: EfLight.Common.PaginationRequest
+- uid: EfLight.Common.SortDirection
+  commentId: T:EfLight.Common.SortDirection
+  parent: EfLight.Common
+  href: EfLight.Common.SortDirection.html
+  name: SortDirection
+  nameWithType: SortDirection
+  fullName: EfLight.Common.SortDirection
 - uid: EfLight.Common
   commentId: N:EfLight.Common
   href: EfLight.html
