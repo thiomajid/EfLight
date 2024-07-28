@@ -3,7 +3,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EfLight.Core;
 
-public abstract class LightRepository(DbContext context) : ILightRepository
+public abstract class LightRepository<TContext> :
+    ILightRepository
+    where TContext : DbContext
 {
-    protected readonly DbContext _context = context;
+    protected readonly TContext _context;
+
+    public LightRepository(TContext context)
+    {
+        _context = context;
+    }
 }

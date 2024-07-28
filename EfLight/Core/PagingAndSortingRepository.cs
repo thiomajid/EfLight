@@ -5,10 +5,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EfLight.Core;
 
-public abstract class PagingAndSortingRepository<TEntity, TKey>(DbContext context)
-    : CrudRepository<TEntity, TKey>(context),
+public abstract class PagingAndSortingRepository<TContext, TEntity, TKey>(TContext context)
+    : CrudRepository<TContext, TEntity, TKey>(context),
         IPagingAndSortingRepository<TEntity, TKey>
     where TEntity : class
+    where TContext : DbContext
 {
     /// <summary>
     ///     Retrives all records held in <typeparamref name="TEntity" /> entity's table.

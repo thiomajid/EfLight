@@ -1,10 +1,10 @@
 ﻿using System.Reflection;
-
 using EfLight.Attributes;
 using EfLight.Core;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace EfLight.Extensions;
+
 public static class ServicesCollection
 {
     /// <summary>
@@ -29,7 +29,8 @@ public static class ServicesCollection
     ///     If one of the repositories does not implement an interface extending from the generic repositories,
     ///     this exception will be thrown.
     /// </exception>
-    public static IServiceCollection AddEfLight<TAssembly>(this IServiceCollection services, Action<EfLightOptions>? options = null)
+    public static IServiceCollection AddEfLight<TAssembly>(this IServiceCollection services,
+        Action<EfLightOptions>? options = null)
     {
         // retrievng the options
         var efLightOptions = new EfLightOptions();
@@ -38,37 +39,40 @@ public static class ServicesCollection
         // registering repositories
         var targets = typeof(TAssembly).Assembly.ExportedTypes
             .Where(exportedType =>
-                exportedType.IsLightRepository() &&
-                exportedType.ImplementsLightRepository())
+                exportedType.IsDefined(typeof(RepositoryLifetimeAttribute), false))
             .ToList();
 
-        targets.ForEach(repoClass =>
+        targets.ForEach(repository =>
         {
-            var implInterface = repoClass.GetInterfaces()
-             .SingleOrDefault(inter => inter.InheritsFromRepositoryInterface());
+            var interfaces = repository.GetInterfaces();
+            var implementedInterface = repository.GetInterfaces()
+                .SingleOrDefault(inter => inter.IsSubInterfaceOfLightRepository());
 
-            var lifetimeAttribute = repoClass.GetCustomAttribute<RepositoryLifetimeAttribute>();
-            
-            if (implInterface is null)
+            var lifetimeAttribute = repository.GetCustomAttribute<RepositoryLifetimeAttribute>();
+
+            if (implementedInterface is null)
             {
-                throw new ArgumentException($"{repoClass.Name} must implement at least ICrudRepository");
+                throw new ArgumentException($"{repository.Name} must implement at least ICrudRepository");
             }
 
             var lifetime = lifetimeAttribute?.Lifetime switch
             {
                 ServiceLifetime.Transient => ServiceLifetime.Transient,
                 ServiceLifetime.Scoped => ServiceLifetime.Scoped,
-                ServiceLifetime.Singleton => throw new ArgumentException($"Invalid lifetime for {repoClass.Name}. Singleton lifetime is not allowed, it prevents the app to build."),
+                ServiceLifetime.Singleton => throw new ArgumentException(
+                    $"Invalid lifetime for {repository.Name}. Singleton lifetime is not allowed, it prevents the app to build."),
                 _ => options is null ? ServiceLifetime.Scoped : efLightOptions.DefaultLifetime
             };
 
-            RegisterRepository(services, repository: repoClass, implementedInterface: implInterface, lifetime: lifetime);
+            RegisterRepository(services, repository: repository, implementedInterface: implementedInterface,
+                lifetime: lifetime);
         });
 
         return services;
     }
 
-    private static void RegisterRepository(IServiceCollection services, Type repository, Type implementedInterface, ServiceLifetime? lifetime)
+    private static void RegisterRepository(IServiceCollection services, Type repository, Type implementedInterface,
+        ServiceLifetime? lifetime)
     {
         _ = lifetime switch
         {

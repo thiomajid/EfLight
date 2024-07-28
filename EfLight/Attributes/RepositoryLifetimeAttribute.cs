@@ -5,7 +5,7 @@ namespace EfLight.Attributes;
 /// <summary>
 /// Used during services registration to indicate the lifetime of the repository.
 /// </summary>
-[AttributeUsage(AttributeTargets.Class, Inherited = false, AllowMultiple = false)]
+[AttributeUsage(AttributeTargets.Class, Inherited = false)]
 public sealed class RepositoryLifetimeAttribute : Attribute
 {
     public ServiceLifetime Lifetime { get; set; }

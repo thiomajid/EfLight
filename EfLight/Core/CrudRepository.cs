@@ -8,9 +8,10 @@ using Microsoft.EntityFrameworkCore.Query;
 
 namespace EfLight.Core;
 
-public abstract class CrudRepository<TEntity, TKey>(DbContext context)
-    : LightRepository(context), ICrudRepository<TEntity, TKey>
+public abstract class CrudRepository<TContext, TEntity, TKey>(TContext context)
+    : LightRepository<TContext>(context), ICrudRepository<TEntity, TKey>
     where TEntity : class
+    where TContext : DbContext
 {
     #region Save fns
 
