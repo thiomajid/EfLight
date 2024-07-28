@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 
 using EfLight.Attributes;
-
+using EfLight.Core;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace EfLight.Extensions;
