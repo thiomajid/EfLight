@@ -1,7 +1,7 @@
 ﻿using EfLight.Abstractions;
 
 namespace EfLight.Extensions;
-internal static class InterfaceExtensions
+internal static class Reflection
 {
     /// <summary>
     /// Checks if a given interface inherits from <see cref="ILightRepository"/> without being <see cref="ILightRepository"/>,

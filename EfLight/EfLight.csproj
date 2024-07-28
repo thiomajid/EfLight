@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Title>EfLight</Title>
-    <PackageProjectUrl>https://eflight.netlify.app/</PackageProjectUrl>
+    <PackageProjectUrl>https://thiomajid.github.io/EfLight/</PackageProjectUrl>
     <Description>Utility classes to reduce boilerplate code while using EF Core.</Description>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/thiomajid/EfLight</RepositoryUrl>

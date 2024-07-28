@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace EfLight.Extensions;
+namespace EfLight.Core;
 public class EfLightOptions
 {
     public ServiceLifetime DefaultLifetime { get; set; }

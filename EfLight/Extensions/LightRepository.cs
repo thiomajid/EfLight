@@ -2,14 +2,14 @@
 using EfLight.Core;
 
 namespace EfLight.Extensions;
-internal static class RepositoryExtensions
+internal static class LightRepository
 {
     /// <summary>
-    /// Checks if a given repository class inherits from <see cref="LightRepository"/>.
+    /// Checks if a given repository class inherits from <see cref="Core.LightRepository"/>.
     /// </summary>
     /// <param name="t"></param>
     /// <returns></returns>
-    public static bool IsLightRepository(this Type t) => t.IsSubclassOf(typeof(LightRepository));
+    public static bool IsLightRepository(this Type t) => t.IsSubclassOf(typeof(Core.LightRepository));
 
 
     /// <summary>

@@ -5,7 +5,7 @@ using EfLight.Core;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace EfLight.Extensions;
-public static class ServicesCollectionExtensions
+public static class ServicesCollection
 {
     /// <summary>
     /// Registers all repositories in <typeparamref name="TAssembly"/> using <see cref="ServiceLifetime.Scoped"/> by default
