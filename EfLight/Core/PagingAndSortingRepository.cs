@@ -1,7 +1,6 @@
 ﻿using System.Linq.Expressions;
 using EfLight.Abstractions;
 using EfLight.Common;
-using EfLight.Utils;
 using Microsoft.EntityFrameworkCore;
 
 namespace EfLight.Core;
