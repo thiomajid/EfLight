@@ -1,10 +1,8 @@
 ﻿name: Build and Deploy to Nuget
-
 on:
   push:
     tags:
       - "v*.*.*"
-    branches: ["main"]
   pull_request:
     branches:
       - main
@@ -17,7 +15,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v3
@@ -27,13 +25,23 @@ jobs:
       - name: Build
         run: dotnet build --configuration ${{ env.BUILD_CONFIG }} ${{ env.SOLUTION }}
 
+      - name: Set version
+        id: set_version
+        run: |
+          if [[ ${{ github.ref }} == refs/tags/* ]]; then
+            echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+          else
+            echo "VERSION=0.0.0-${GITHUB_SHA::7}" >> $GITHUB_OUTPUT
+          fi
+
       - name: Package
         run: >
           dotnet pack --no-restore --no-build --configuration ${{ env.BUILD_CONFIG }}
-          -p:PackageVersion=${{ github.ref_name }} --output .
+          -p:PackageVersion=${{ steps.set_version.outputs.VERSION }} --output .
 
       - name: Publish
+        if: startsWith(github.ref, 'refs/tags/')
         run: >
-          dotnet nuget push EfLight.${{ github.ref_name }}.nupkg
+          dotnet nuget push *.nupkg
           -s https://nuget.pkg.github.com/thiomajid/index.json
           -k ${{ secrets.NUGET_API_KEY }}
