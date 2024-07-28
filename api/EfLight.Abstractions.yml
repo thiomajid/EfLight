@@ -1,0 +1,110 @@
+### YamlMime:ManagedReference
+items:
+- uid: EfLight.Abstractions
+  commentId: N:EfLight.Abstractions
+  id: EfLight.Abstractions
+  children:
+  - EfLight.Abstractions.ICrudRepository`2
+  - EfLight.Abstractions.ILightRepository
+  - EfLight.Abstractions.IPagingAndSortingRepository`2
+  langs:
+  - csharp
+  - vb
+  name: EfLight.Abstractions
+  nameWithType: EfLight.Abstractions
+  fullName: EfLight.Abstractions
+  type: Namespace
+  assemblies:
+  - EfLight
+references:
+- uid: EfLight.Abstractions.ICrudRepository`2
+  commentId: T:EfLight.Abstractions.ICrudRepository`2
+  href: EfLight.Abstractions.ICrudRepository-2.html
+  name: ICrudRepository<TEntity, TKey>
+  nameWithType: ICrudRepository<TEntity, TKey>
+  fullName: EfLight.Abstractions.ICrudRepository<TEntity, TKey>
+  nameWithType.vb: ICrudRepository(Of TEntity, TKey)
+  fullName.vb: EfLight.Abstractions.ICrudRepository(Of TEntity, TKey)
+  name.vb: ICrudRepository(Of TEntity, TKey)
+  spec.csharp:
+  - uid: EfLight.Abstractions.ICrudRepository`2
+    name: ICrudRepository
+    href: EfLight.Abstractions.ICrudRepository-2.html
+  - name: <
+  - name: TEntity
+  - name: ','
+  - name: " "
+  - name: TKey
+  - name: '>'
+  spec.vb:
+  - uid: EfLight.Abstractions.ICrudRepository`2
+    name: ICrudRepository
+    href: EfLight.Abstractions.ICrudRepository-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEntity
+  - name: ','
+  - name: " "
+  - name: TKey
+  - name: )
+- uid: EfLight.Abstractions.ILightRepository
+  commentId: T:EfLight.Abstractions.ILightRepository
+  parent: EfLight.Abstractions
+  href: EfLight.Abstractions.ILightRepository.html
+  name: ILightRepository
+  nameWithType: ILightRepository
+  fullName: EfLight.Abstractions.ILightRepository
+- uid: EfLight.Abstractions.IPagingAndSortingRepository`2
+  commentId: T:EfLight.Abstractions.IPagingAndSortingRepository`2
+  href: EfLight.Abstractions.IPagingAndSortingRepository-2.html
+  name: IPagingAndSortingRepository<TEntity, TKey>
+  nameWithType: IPagingAndSortingRepository<TEntity, TKey>
+  fullName: EfLight.Abstractions.IPagingAndSortingRepository<TEntity, TKey>
+  nameWithType.vb: IPagingAndSortingRepository(Of TEntity, TKey)
+  fullName.vb: EfLight.Abstractions.IPagingAndSortingRepository(Of TEntity, TKey)
+  name.vb: IPagingAndSortingRepository(Of TEntity, TKey)
+  spec.csharp:
+  - uid: EfLight.Abstractions.IPagingAndSortingRepository`2
+    name: IPagingAndSortingRepository
+    href: EfLight.Abstractions.IPagingAndSortingRepository-2.html
+  - name: <
+  - name: TEntity
+  - name: ','
+  - name: " "
+  - name: TKey
+  - name: '>'
+  spec.vb:
+  - uid: EfLight.Abstractions.IPagingAndSortingRepository`2
+    name: IPagingAndSortingRepository
+    href: EfLight.Abstractions.IPagingAndSortingRepository-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEntity
+  - name: ','
+  - name: " "
+  - name: TKey
+  - name: )
+- uid: EfLight.Abstractions
+  commentId: N:EfLight.Abstractions
+  href: EfLight.html
+  name: EfLight.Abstractions
+  nameWithType: EfLight.Abstractions
+  fullName: EfLight.Abstractions
+  spec.csharp:
+  - uid: EfLight
+    name: EfLight
+    href: EfLight.html
+  - name: .
+  - uid: EfLight.Abstractions
+    name: Abstractions
+    href: EfLight.Abstractions.html
+  spec.vb:
+  - uid: EfLight
+    name: EfLight
+    href: EfLight.html
+  - name: .
+  - uid: EfLight.Abstractions
+    name: Abstractions
+    href: EfLight.Abstractions.html

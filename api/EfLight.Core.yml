@@ -1,0 +1,110 @@
+### YamlMime:ManagedReference
+items:
+- uid: EfLight.Core
+  commentId: N:EfLight.Core
+  id: EfLight.Core
+  children:
+  - EfLight.Core.CrudRepository`2
+  - EfLight.Core.LightRepository
+  - EfLight.Core.PagingAndSortingRepository`2
+  langs:
+  - csharp
+  - vb
+  name: EfLight.Core
+  nameWithType: EfLight.Core
+  fullName: EfLight.Core
+  type: Namespace
+  assemblies:
+  - EfLight
+references:
+- uid: EfLight.Core.CrudRepository`2
+  commentId: T:EfLight.Core.CrudRepository`2
+  href: EfLight.Core.CrudRepository-2.html
+  name: CrudRepository<TEntity, TKey>
+  nameWithType: CrudRepository<TEntity, TKey>
+  fullName: EfLight.Core.CrudRepository<TEntity, TKey>
+  nameWithType.vb: CrudRepository(Of TEntity, TKey)
+  fullName.vb: EfLight.Core.CrudRepository(Of TEntity, TKey)
+  name.vb: CrudRepository(Of TEntity, TKey)
+  spec.csharp:
+  - uid: EfLight.Core.CrudRepository`2
+    name: CrudRepository
+    href: EfLight.Core.CrudRepository-2.html
+  - name: <
+  - name: TEntity
+  - name: ','
+  - name: " "
+  - name: TKey
+  - name: '>'
+  spec.vb:
+  - uid: EfLight.Core.CrudRepository`2
+    name: CrudRepository
+    href: EfLight.Core.CrudRepository-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEntity
+  - name: ','
+  - name: " "
+  - name: TKey
+  - name: )
+- uid: EfLight.Core.LightRepository
+  commentId: T:EfLight.Core.LightRepository
+  parent: EfLight.Core
+  href: EfLight.Core.LightRepository.html
+  name: LightRepository
+  nameWithType: LightRepository
+  fullName: EfLight.Core.LightRepository
+- uid: EfLight.Core.PagingAndSortingRepository`2
+  commentId: T:EfLight.Core.PagingAndSortingRepository`2
+  href: EfLight.Core.PagingAndSortingRepository-2.html
+  name: PagingAndSortingRepository<TEntity, TKey>
+  nameWithType: PagingAndSortingRepository<TEntity, TKey>
+  fullName: EfLight.Core.PagingAndSortingRepository<TEntity, TKey>
+  nameWithType.vb: PagingAndSortingRepository(Of TEntity, TKey)
+  fullName.vb: EfLight.Core.PagingAndSortingRepository(Of TEntity, TKey)
+  name.vb: PagingAndSortingRepository(Of TEntity, TKey)
+  spec.csharp:
+  - uid: EfLight.Core.PagingAndSortingRepository`2
+    name: PagingAndSortingRepository
+    href: EfLight.Core.PagingAndSortingRepository-2.html
+  - name: <
+  - name: TEntity
+  - name: ','
+  - name: " "
+  - name: TKey
+  - name: '>'
+  spec.vb:
+  - uid: EfLight.Core.PagingAndSortingRepository`2
+    name: PagingAndSortingRepository
+    href: EfLight.Core.PagingAndSortingRepository-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEntity
+  - name: ','
+  - name: " "
+  - name: TKey
+  - name: )
+- uid: EfLight.Core
+  commentId: N:EfLight.Core
+  href: EfLight.html
+  name: EfLight.Core
+  nameWithType: EfLight.Core
+  fullName: EfLight.Core
+  spec.csharp:
+  - uid: EfLight
+    name: EfLight
+    href: EfLight.html
+  - name: .
+  - uid: EfLight.Core
+    name: Core
+    href: EfLight.Core.html
+  spec.vb:
+  - uid: EfLight
+    name: EfLight
+    href: EfLight.html
+  - name: .
+  - uid: EfLight.Core
+    name: Core
+    href: EfLight.Core.html

@@ -1,0 +1,45 @@
+### YamlMime:TableOfContent
+items:
+- uid: EfLight.Abstractions
+  name: EfLight.Abstractions
+  items:
+  - uid: EfLight.Abstractions.ICrudRepository`2
+    name: ICrudRepository<TEntity, TKey>
+  - uid: EfLight.Abstractions.ILightRepository
+    name: ILightRepository
+  - uid: EfLight.Abstractions.IPagingAndSortingRepository`2
+    name: IPagingAndSortingRepository<TEntity, TKey>
+- uid: EfLight.Attributes
+  name: EfLight.Attributes
+  items:
+  - uid: EfLight.Attributes.RepositoryLifetimeAttribute
+    name: RepositoryLifetimeAttribute
+- uid: EfLight.Common
+  name: EfLight.Common
+  items:
+  - uid: EfLight.Common.PaginationRequest
+    name: PaginationRequest
+- uid: EfLight.Core
+  name: EfLight.Core
+  items:
+  - uid: EfLight.Core.CrudRepository`2
+    name: CrudRepository<TEntity, TKey>
+  - uid: EfLight.Core.LightRepository
+    name: LightRepository
+  - uid: EfLight.Core.PagingAndSortingRepository`2
+    name: PagingAndSortingRepository<TEntity, TKey>
+- uid: EfLight.Extensions
+  name: EfLight.Extensions
+  items:
+  - uid: EfLight.Extensions.EfLightOptions
+    name: EfLightOptions
+  - uid: EfLight.Extensions.Object
+    name: Object
+  - uid: EfLight.Extensions.ServicesCollectionExtensions
+    name: ServicesCollectionExtensions
+- uid: EfLight.Utils
+  name: EfLight.Utils
+  items:
+  - uid: EfLight.Utils.SortDirection
+    name: SortDirection
+memberLayout: SamePage

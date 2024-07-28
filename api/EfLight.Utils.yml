@@ -1,0 +1,46 @@
+### YamlMime:ManagedReference
+items:
+- uid: EfLight.Utils
+  commentId: N:EfLight.Utils
+  id: EfLight.Utils
+  children:
+  - EfLight.Utils.SortDirection
+  langs:
+  - csharp
+  - vb
+  name: EfLight.Utils
+  nameWithType: EfLight.Utils
+  fullName: EfLight.Utils
+  type: Namespace
+  assemblies:
+  - EfLight
+references:
+- uid: EfLight.Utils.SortDirection
+  commentId: T:EfLight.Utils.SortDirection
+  parent: EfLight.Utils
+  href: EfLight.Utils.SortDirection.html
+  name: SortDirection
+  nameWithType: SortDirection
+  fullName: EfLight.Utils.SortDirection
+- uid: EfLight.Utils
+  commentId: N:EfLight.Utils
+  href: EfLight.html
+  name: EfLight.Utils
+  nameWithType: EfLight.Utils
+  fullName: EfLight.Utils
+  spec.csharp:
+  - uid: EfLight
+    name: EfLight
+    href: EfLight.html
+  - name: .
+  - uid: EfLight.Utils
+    name: Utils
+    href: EfLight.Utils.html
+  spec.vb:
+  - uid: EfLight
+    name: EfLight
+    href: EfLight.html
+  - name: .
+  - uid: EfLight.Utils
+    name: Utils
+    href: EfLight.Utils.html
