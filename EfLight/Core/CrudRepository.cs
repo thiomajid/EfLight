@@ -48,21 +48,21 @@ public abstract class CrudRepository<TContext, TEntity, TKey>(TContext context)
 
     /// <summary>
     /// Counts the number of records in the <typeparamref name="TEntity"/> entity's table
-    /// fullfilling the given <paramref name="predicateFn"/>'s condition.
+    /// fullfilling the given <paramref name="predicate"/>'s condition.
     /// </summary>
-    /// <param name="predicateFn">A condition that every <typeparamref name="TEntity"/> can fullfill</param>
-    public virtual long CountWhere(Expression<Func<TEntity, bool>> predicateFn) =>
-        _context.Set<TEntity>().LongCount(predicateFn);
+    /// <param name="predicate">A condition that every <typeparamref name="TEntity"/> can fullfill</param>
+    public virtual long CountWhere(Expression<Func<TEntity, bool>> predicate) =>
+        _context.Set<TEntity>().LongCount(predicate);
 
 
     /// <summary>
     /// Counts the number of records in the <typeparamref name="TEntity"/> entity's table
-    /// fullfilling the given <paramref name="predicateFn"/>'s condition.
+    /// fullfilling the given <paramref name="predicate"/>'s condition.
     /// </summary>
-    /// <param name="predicateFn"></param>
-    public virtual async Task<long> CountWhereAsync(Expression<Func<TEntity, bool>> predicateFn,
+    /// <param name="predicate"></param>
+    public virtual async Task<long> CountWhereAsync(Expression<Func<TEntity, bool>> predicate,
         CancellationToken cancellationToken = default) =>
-        await _context.Set<TEntity>().LongCountAsync(predicateFn, cancellationToken);
+        await _context.Set<TEntity>().LongCountAsync(predicate, cancellationToken);
 
     #endregion
 
@@ -119,29 +119,29 @@ public abstract class CrudRepository<TContext, TEntity, TKey>(TContext context)
 
 
     /// <summary>
-    /// Deletes one or more <typeparamref name="TEntity"/> entities based on the <paramref name="predicateFn"/>.
+    /// Deletes one or more <typeparamref name="TEntity"/> entities based on the <paramref name="predicate"/>.
     /// </summary>
-    /// <param name="predicateFn"></param>
+    /// <param name="predicate"></param>
     /// <returns>The number of removed rows.</returns>
     /// <exception cref="NullReferenceException"></exception>
-    public virtual int DeleteWhere(Expression<Func<TEntity, bool>> predicateFn)
+    public virtual int DeleteWhere(Expression<Func<TEntity, bool>> predicate)
     {
-        return _context.Set<TEntity>().Where(predicateFn).ExecuteDelete();
+        return _context.Set<TEntity>().Where(predicate).ExecuteDelete();
     }
 
 
     /// <summary>
-    /// Deletes one or more <typeparamref name="TEntity"/> entities based on the <paramref name="predicateFn"/>.
+    /// Deletes one or more <typeparamref name="TEntity"/> entities based on the <paramref name="predicate"/>.
     /// </summary>
-    /// <param name="predicateFn"></param>
+    /// <param name="predicate"></param>
     /// <returns>The number of removed rows.</returns>
     /// <exception cref="NullReferenceException"></exception>
     public virtual Task<int> DeleteWhereAsync(
-        Expression<Func<TEntity, bool>> predicateFn,
+        Expression<Func<TEntity, bool>> predicate,
         CancellationToken cancellationToken = default
     )
     {
-        return _context.Set<TEntity>().Where(predicateFn).ExecuteDeleteAsync(cancellationToken);
+        return _context.Set<TEntity>().Where(predicate).ExecuteDeleteAsync(cancellationToken);
     }
 
     #endregion
@@ -151,35 +151,35 @@ public abstract class CrudRepository<TContext, TEntity, TKey>(TContext context)
 
     /// <summary>
     /// Checks if at least one <typeparamref name="TEntity"/> fullfills the condition of
-    /// the <paramref name="predicateFn"/>.
+    /// the <paramref name="predicate"/>.
     /// </summary>
-    /// <param name="predicateFn"></param>
-    public virtual bool ExistsWhere(Expression<Func<TEntity, bool>> predicateFn) =>
-        _context.Set<TEntity>().Any(predicateFn);
+    /// <param name="predicate"></param>
+    public virtual bool ExistsWhere(Expression<Func<TEntity, bool>> predicate) =>
+        _context.Set<TEntity>().Any(predicate);
 
 
     /// <summary>
     /// Checks if at least one <typeparamref name="TEntity"/> fullfills the condition of
-    /// the <paramref name="predicateFn"/>.
+    /// the <paramref name="predicate"/>.
     /// </summary>
-    /// <param name="predicateFn"></param>
-    public virtual async Task<bool> ExistsWhereAsync(Expression<Func<TEntity, bool>> predicateFn) =>
-        await _context.Set<TEntity>().AnyAsync(predicateFn);
+    /// <param name="predicate"></param>
+    public virtual async Task<bool> ExistsWhereAsync(Expression<Func<TEntity, bool>> predicate) =>
+        await _context.Set<TEntity>().AnyAsync(predicate);
 
 
     /// <summary>
-    /// Checks if all <see cref="TEntity"/> fullfills the given <paramref name="predicateFn"/>
+    /// Checks if all <see cref="TEntity"/> fullfills the given <paramref name="predicate"/>
     /// </summary>
-    /// <param name="predicateFn"></param>
-    public virtual bool AllAre(Expression<Func<TEntity, bool>> predicateFn) => _context.Set<TEntity>().All(predicateFn);
+    /// <param name="predicate"></param>
+    public virtual bool AllAre(Expression<Func<TEntity, bool>> predicate) => _context.Set<TEntity>().All(predicate);
 
 
     /// <summary>
-    /// Checks if all <see cref="TEntity"/> fullfills the given <paramref name="predicateFn"/>
+    /// Checks if all <see cref="TEntity"/> fullfills the given <paramref name="predicate"/>
     /// </summary>
-    /// <param name="predicateFn"></param>
-    public virtual async Task<bool> AllAreAsync(Expression<Func<TEntity, bool>> predicateFn) =>
-        await _context.Set<TEntity>().AllAsync(predicateFn);
+    /// <param name="predicate"></param>
+    public virtual async Task<bool> AllAreAsync(Expression<Func<TEntity, bool>> predicate) =>
+        await _context.Set<TEntity>().AllAsync(predicate);
 
     #endregion
 
@@ -212,13 +212,13 @@ public abstract class CrudRepository<TContext, TEntity, TKey>(TContext context)
 
     /// <summary>
     /// Finds the <strong>first</strong> <typeparamref name="TEntity"/> entity that matches
-    /// the given <paramref name="predicateFn"/>.
+    /// the given <paramref name="predicate"/>.
     /// </summary>
-    /// <param name="predicateFn"></param>
-    public virtual Option<TEntity> FindWhere(Expression<Func<TEntity, bool>> predicateFn)
+    /// <param name="predicate"></param>
+    public virtual Option<TEntity> FindWhere(Expression<Func<TEntity, bool>> predicate)
     {
         var entity = _context.Set<TEntity>()
-            .Where(predicateFn)
+            .Where(predicate)
             .FirstOrDefault();
 
         return entity.ToOption();
@@ -227,16 +227,16 @@ public abstract class CrudRepository<TContext, TEntity, TKey>(TContext context)
 
     /// <summary>
     /// Finds the <strong>first</strong> <typeparamref name="TEntity"/> entity that matches
-    /// the given <paramref name="predicateFn"/>.
+    /// the given <paramref name="predicate"/>.
     /// </summary>
-    /// <param name="predicateFn"></param>
+    /// <param name="predicate"></param>
     public virtual async Task<Option<TEntity>> FindWhereAsync(
-        Expression<Func<TEntity, bool>> predicateFn,
+        Expression<Func<TEntity, bool>> predicate,
         CancellationToken cancellationToken = default
     )
     {
         var entity = await _context.Set<TEntity>()
-            .Where(predicateFn)
+            .Where(predicate)
             .FirstOrDefaultAsync(cancellationToken);
 
         return entity.ToOption();

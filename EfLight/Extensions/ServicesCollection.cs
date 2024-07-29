@@ -29,8 +29,10 @@ public static class ServicesCollection
     ///     If one of the repositories does not implement an interface extending from the generic repositories,
     ///     this exception will be thrown.
     /// </exception>
-    public static IServiceCollection AddEfLight<TAssembly>(this IServiceCollection services,
-        Action<EfLightOptions>? options = null)
+    public static IServiceCollection AddEfLight<TAssembly>(
+        this IServiceCollection services,
+        Action<EfLightOptions>? options = null
+    )
     {
         // retrievng the options
         var efLightOptions = new EfLightOptions();
@@ -44,17 +46,14 @@ public static class ServicesCollection
 
         targets.ForEach(repository =>
         {
-            var interfaces = repository.GetInterfaces();
             var implementedInterface = repository.GetInterfaces()
-                .SingleOrDefault(inter => inter.IsSubInterfaceOfLightRepository());
-
-            var lifetimeAttribute = repository.GetCustomAttribute<RepositoryLifetimeAttribute>();
-
+                .SingleOrDefault(@interface => @interface.IsSubInterfaceOfLightRepository());
             if (implementedInterface is null)
             {
                 throw new ArgumentException($"{repository.Name} must implement at least ICrudRepository");
             }
 
+            var lifetimeAttribute = repository.GetCustomAttribute<RepositoryLifetimeAttribute>();
             var lifetime = lifetimeAttribute?.Lifetime switch
             {
                 ServiceLifetime.Transient => ServiceLifetime.Transient,

@@ -12,7 +12,7 @@ public abstract class PagingAndSortingRepository<TContext, TEntity, TKey>(TConte
     where TContext : DbContext
 {
     /// <summary>
-    ///     Retrives all records held in <typeparamref name="TEntity" /> entity's table.
+    ///     Retrieves all records held in <typeparamref name="TEntity" /> entity's table.
     /// </summary>
     public IEnumerable<TEntity> FindAll(bool track = false)
     {
@@ -25,7 +25,9 @@ public abstract class PagingAndSortingRepository<TContext, TEntity, TKey>(TConte
 
 
     /// <summary>
-    ///     Returns a given set of at most <paramref name="PageSize" /> of <typeparamref name="TEntity" />
+    ///     Returns a given set of at most (<see cref="P:EfLight.Common.PaginationRequest.Index"/> *
+    ///     <see cref="P:EfLight.Common.PaginationRequest.Offset"/>) + <see cref="P:EfLight.Common.PaginationRequest.Offset"/>
+    ///     of <typeparamref name="TEntity"/>.
     /// </summary>
     public IEnumerable<TEntity> FindAll(PaginationRequest page, bool track = false)
     {
@@ -34,11 +36,11 @@ public abstract class PagingAndSortingRepository<TContext, TEntity, TKey>(TConte
 
 
     /// <summary>
-    ///     Returns a given set of at most <paramref name="PageSize" /> of <typeparamref name="TEntity" />
-    ///     that matches the provided <paramref name="predicate" />.
+    /// Returns a given set of at most (<see cref="P:EfLight.Common.PaginationRequest.Index"/> *
+    /// <see cref="P:EfLight.Common.PaginationRequest.Offset"/>) + <see cref="P:EfLight.Common.PaginationRequest.Offset"/>
+    /// of <typeparamref name="TEntity"/> that matches the provided <paramref name="predicate"/>.
     /// </summary>
-    /// <param name="PageNumber"></param>
-    /// <param name="PageSize"></param>
+    /// <param name="predicate"></param>
     public IEnumerable<TEntity> FindAll(
         PaginationRequest page,
         Expression<Func<TEntity, bool>> predicate,
@@ -50,11 +52,10 @@ public abstract class PagingAndSortingRepository<TContext, TEntity, TKey>(TConte
 
 
     /// <summary>
-    ///     Returns a given set of at most <paramref name="PageSize" /> of <typeparamref name="TEntity" />
-    ///     ordered by <typeparamref name="TOrderKey" />.
+    /// Returns a given set of at most (<see cref="P:EfLight.Common.PaginationRequest.Index"/> *
+    /// <see cref="P:EfLight.Common.PaginationRequest.Offset"/>) + <see cref="P:EfLight.Common.PaginationRequest.Offset"/>
+    /// of <typeparamref name="TEntity"/> ordered by <typeparamref name="TOrderKey"/>
     /// </summary>
-    /// <param name="PageNumber"></param>
-    /// <param name="PageSize"></param>
     public IEnumerable<TEntity> FindAll<TOrderKey>(
         PaginationRequest page,
         Expression<Func<TEntity, TOrderKey>> orderKey,
@@ -67,11 +68,11 @@ public abstract class PagingAndSortingRepository<TContext, TEntity, TKey>(TConte
 
 
     /// <summary>
-    ///     Returns a given set of at most <paramref name="PageSize" /> of <typeparamref name="TEntity" />
-    ///     that matches the provided <paramref name="predicate" /> and ordered by <typeparamref name="TOrderKey" />
+    /// Returns a given set of at most (<see cref="P:EfLight.Common.PaginationRequest.Index"/> *
+    /// <see cref="P:EfLight.Common.PaginationRequest.Offset"/>) + <see cref="P:EfLight.Common.PaginationRequest.Offset"/>
+    /// of <typeparamref name="TEntity"/> that matches the provided <paramref name="predicate"/> and ordered by <typeparamref name="TOrderKey"/>
     /// </summary>
-    /// <param name="PageNumber"></param>
-    /// <param name="PageSize"></param>
+    /// <param name="predicate"></param>
     public IEnumerable<TEntity> FindAll<TOrderKey>(
         PaginationRequest page,
         Expression<Func<TEntity, bool>> predicate,
@@ -99,10 +100,9 @@ public abstract class PagingAndSortingRepository<TContext, TEntity, TKey>(TConte
 
 
     /// <summary>
-    ///     Returns a given set of at most <paramref name="PageSize" /> of <typeparamref name="TEntity" />.
+    /// Returns a given set of at most (<see cref="P:EfLight.Common.PaginationRequest.Index"/> *
+    /// <see cref="P:EfLight.Common.PaginationRequest.Offset"/>) + <see cref="P:EfLight.Common.PaginationRequest.Offset"/>
     /// </summary>
-    /// <param name="PageNumber"></param>
-    /// <param name="PageSize"></param>
     public async Task<IEnumerable<TEntity>> FindAllAsync(PaginationRequest page,
         bool track = false,
         CancellationToken cancellationToken = default)
@@ -113,11 +113,10 @@ public abstract class PagingAndSortingRepository<TContext, TEntity, TKey>(TConte
 
 
     /// <summary>
-    ///     Returns a given set of at most <paramref name="PageSize" /> of <typeparamref name="TEntity" /> fullfilling
-    ///     the given <paramref name="predicate" /> condition.
+    /// Returns a given set of at most (<see cref="P:EfLight.Common.PaginationRequest.Index"/> *
+    /// <see cref="P:EfLight.Common.PaginationRequest.Offset"/>) + <see cref="P:EfLight.Common.PaginationRequest.Offset"/>
+    /// of <typeparamref name="TEntity"/> that matches the provided <paramref name="predicate"/>.
     /// </summary>
-    /// <param name="PageNumber"></param>
-    /// <param name="PageSize"></param>
     public async Task<IEnumerable<TEntity>> FindAllAsync(
         PaginationRequest page,
         Expression<Func<TEntity, bool>> predicate,
@@ -134,10 +133,10 @@ public abstract class PagingAndSortingRepository<TContext, TEntity, TKey>(TConte
 
 
     /// <summary>
-    ///     Returns a given set of at most <paramref name="page.PageSize" /> of <typeparamref name="TEntity" />
-    ///     ordered by <typeparamref name="TOrderKey" />.
+    /// Returns a given set of at most (<see cref="P:EfLight.Common.PaginationRequest.Index"/> *
+    /// <see cref="P:EfLight.Common.PaginationRequest.Offset"/>) + <see cref="P:EfLight.Common.PaginationRequest.Offset"/>
+    /// of <typeparamref name="TEntity"/> ordered by <typeparamref name="TOrderKey"/>
     /// </summary>
-    /// <param name="page"></param>
     public async Task<IEnumerable<TEntity>> FindAllAsync<TOrderKey>(
         PaginationRequest page,
         Expression<Func<TEntity, TOrderKey>> orderKey,
@@ -156,11 +155,10 @@ public abstract class PagingAndSortingRepository<TContext, TEntity, TKey>(TConte
 
 
     /// <summary>
-    ///     Returns a given set of at most <paramref name="PageSize" /> of <typeparamref name="TEntity" />
-    ///     that matches the provided <paramref name="predicate" /> and ordered by <typeparamref name="TOrderKey" />
+    /// Returns a given set of at most (<see cref="P:EfLight.Common.PaginationRequest.Index"/> *
+    /// <see cref="P:EfLight.Common.PaginationRequest.Offset"/>) + <see cref="P:EfLight.Common.PaginationRequest.Offset"/>
+    /// of <typeparamref name="TEntity"/> that matches the provided <paramref name="predicate"/> and ordered by <typeparamref name="TOrderKey"/>
     /// </summary>
-    /// <param name="PageNumber"></param>
-    /// <param name="PageSize"></param>
     public async Task<IEnumerable<TEntity>> FindAllAsync<TOrderKey>(
         PaginationRequest page,
         Expression<Func<TEntity, bool>> predicate,
