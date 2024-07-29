@@ -1,0 +1,154 @@
+### YamlMime:ManagedReference
+items:
+- uid: EfLight.Abstractions.ILightRepository
+  commentId: T:EfLight.Abstractions.ILightRepository
+  id: ILightRepository
+  parent: EfLight.Abstractions
+  children: []
+  langs:
+  - csharp
+  - vb
+  name: ILightRepository
+  nameWithType: ILightRepository
+  fullName: EfLight.Abstractions.ILightRepository
+  type: Interface
+  source:
+    remote:
+      path: EfLight/Abstractions/ILightRepository.cs
+      branch: main
+      repo: https://github.com/thiomajid/EfLight.git
+    id: ILightRepository
+    path: EfLight/Abstractions/ILightRepository.cs
+    startLine: 2
+  assemblies:
+  - EfLight
+  namespace: EfLight.Abstractions
+  syntax:
+    content: public interface ILightRepository
+    content.vb: Public Interface ILightRepository
+  extensionMethods:
+  - EfLight.Abstractions.ILightRepository.EfLight.Extensions.Object.ToOption``1
+references:
+- uid: EfLight.Abstractions
+  commentId: N:EfLight.Abstractions
+  href: EfLight.html
+  name: EfLight.Abstractions
+  nameWithType: EfLight.Abstractions
+  fullName: EfLight.Abstractions
+  spec.csharp:
+  - uid: EfLight
+    name: EfLight
+    href: EfLight.html
+  - name: .
+  - uid: EfLight.Abstractions
+    name: Abstractions
+    href: EfLight.Abstractions.html
+  spec.vb:
+  - uid: EfLight
+    name: EfLight
+    href: EfLight.html
+  - name: .
+  - uid: EfLight.Abstractions
+    name: Abstractions
+    href: EfLight.Abstractions.html
+- uid: EfLight.Abstractions.ILightRepository.EfLight.Extensions.Object.ToOption``1
+  commentId: M:EfLight.Extensions.Object.ToOption``1(``0)
+  parent: EfLight.Extensions.Object
+  definition: EfLight.Extensions.Object.ToOption``1(``0)
+  href: EfLight.Extensions.Object.html#EfLight_Extensions_Object_ToOption__1___0_
+  name: ToOption<ILightRepository>(ILightRepository)
+  nameWithType: Object.ToOption<ILightRepository>(ILightRepository)
+  fullName: EfLight.Extensions.Object.ToOption<EfLight.Abstractions.ILightRepository>(EfLight.Abstractions.ILightRepository)
+  nameWithType.vb: Object.ToOption(Of ILightRepository)(ILightRepository)
+  fullName.vb: EfLight.Extensions.Object.ToOption(Of EfLight.Abstractions.ILightRepository)(EfLight.Abstractions.ILightRepository)
+  name.vb: ToOption(Of ILightRepository)(ILightRepository)
+  spec.csharp:
+  - uid: EfLight.Extensions.Object.ToOption``1(EfLight.Abstractions.ILightRepository)
+    name: ToOption
+    href: EfLight.Extensions.Object.html#EfLight_Extensions_Object_ToOption__1___0_
+  - name: <
+  - uid: EfLight.Abstractions.ILightRepository
+    name: ILightRepository
+    href: EfLight.Abstractions.ILightRepository.html
+  - name: '>'
+  - name: (
+  - uid: EfLight.Abstractions.ILightRepository
+    name: ILightRepository
+    href: EfLight.Abstractions.ILightRepository.html
+  - name: )
+  spec.vb:
+  - uid: EfLight.Extensions.Object.ToOption``1(EfLight.Abstractions.ILightRepository)
+    name: ToOption
+    href: EfLight.Extensions.Object.html#EfLight_Extensions_Object_ToOption__1___0_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: EfLight.Abstractions.ILightRepository
+    name: ILightRepository
+    href: EfLight.Abstractions.ILightRepository.html
+  - name: )
+  - name: (
+  - uid: EfLight.Abstractions.ILightRepository
+    name: ILightRepository
+    href: EfLight.Abstractions.ILightRepository.html
+  - name: )
+- uid: EfLight.Extensions.Object.ToOption``1(``0)
+  commentId: M:EfLight.Extensions.Object.ToOption``1(``0)
+  href: EfLight.Extensions.Object.html#EfLight_Extensions_Object_ToOption__1___0_
+  name: ToOption<T>(T)
+  nameWithType: Object.ToOption<T>(T)
+  fullName: EfLight.Extensions.Object.ToOption<T>(T)
+  nameWithType.vb: Object.ToOption(Of T)(T)
+  fullName.vb: EfLight.Extensions.Object.ToOption(Of T)(T)
+  name.vb: ToOption(Of T)(T)
+  spec.csharp:
+  - uid: EfLight.Extensions.Object.ToOption``1(``0)
+    name: ToOption
+    href: EfLight.Extensions.Object.html#EfLight_Extensions_Object_ToOption__1___0_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: EfLight.Extensions.Object.ToOption``1(``0)
+    name: ToOption
+    href: EfLight.Extensions.Object.html#EfLight_Extensions_Object_ToOption__1___0_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: )
+- uid: EfLight.Extensions.Object
+  commentId: T:EfLight.Extensions.Object
+  parent: EfLight.Extensions
+  href: EfLight.Extensions.Object.html
+  name: Object
+  nameWithType: Object
+  fullName: EfLight.Extensions.Object
+- uid: EfLight.Extensions
+  commentId: N:EfLight.Extensions
+  href: EfLight.html
+  name: EfLight.Extensions
+  nameWithType: EfLight.Extensions
+  fullName: EfLight.Extensions
+  spec.csharp:
+  - uid: EfLight
+    name: EfLight
+    href: EfLight.html
+  - name: .
+  - uid: EfLight.Extensions
+    name: Extensions
+    href: EfLight.Extensions.html
+  spec.vb:
+  - uid: EfLight
+    name: EfLight
+    href: EfLight.html
+  - name: .
+  - uid: EfLight.Extensions
+    name: Extensions
+    href: EfLight.Extensions.html

@@ -1,0 +1,1164 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Interface ICrudRepository&lt;TEntity, TKey&gt; | EfLight </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Interface ICrudRepository&lt;TEntity, TKey&gt; | EfLight ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/thiomajid/EfLight/new/main/apiSpec/new?filename=EfLight_Abstractions_ICrudRepository_2.md&amp;value=---%0Auid%3A%20EfLight.Abstractions.ICrudRepository%602%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../logo.svg" alt="EfLight">
+            EfLight
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="EfLight.Abstractions.ICrudRepository`2">
+
+
+
+  <h1 id="EfLight_Abstractions_ICrudRepository_2" data-uid="EfLight.Abstractions.ICrudRepository`2" class="text-break">
+Interface ICrudRepository&lt;TEntity, TKey&gt;  <a class="header-action link-secondary" title="View source" href="https://github.com/thiomajid/EfLight/blob/main/EfLight/Abstractions/ICrudRepository.cs/#L8"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="EfLight.html">EfLight</a>.<a class="xref" href="EfLight.Abstractions.html">Abstractions</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>EfLight.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface ICrudRepository&lt;TEntity, in TKey&gt; : ILightRepository where TEntity : class</code></pre>
+  </div>
+
+
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>TEntity</code></dt>
+    <dd></dd>
+    <dt><code>TKey</code></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
+  <div>
+      <a class="xref" href="EfLight.Extensions.Object.html#EfLight_Extensions_Object_ToOption__1___0_">Object.ToOption&lt;T&gt;(T?)</a>
+  </div>
+  </dd></dl>
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="EfLight_Abstractions_ICrudRepository_2_Add_" data-uid="EfLight.Abstractions.ICrudRepository`2.Add*"></a>
+
+  <h3 id="EfLight_Abstractions_ICrudRepository_2_Add__0_" data-uid="EfLight.Abstractions.ICrudRepository`2.Add(`0)">
+  Add(TEntity)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/thiomajid/EfLight/blob/main/EfLight/Abstractions/ICrudRepository.cs/#L73"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Persists the given <code class="typeparamref">TEntity</code> entity to the database.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">EntityEntry&lt;TEntity&gt; Add(TEntity entity)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>entity</code> <span class="xref">TEntity</span></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.changetracking.entityentry-1">EntityEntry</a>&lt;TEntity&gt;</dt>
+    <dd><p><strong>1</strong> if the entity has been saved. Otherwise,
+it will be <strong>0</strong>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="EfLight_Abstractions_ICrudRepository_2_AddAsync_" data-uid="EfLight.Abstractions.ICrudRepository`2.AddAsync*"></a>
+
+  <h3 id="EfLight_Abstractions_ICrudRepository_2_AddAsync__0_System_Threading_CancellationToken_" data-uid="EfLight.Abstractions.ICrudRepository`2.AddAsync(`0,System.Threading.CancellationToken)">
+  AddAsync(TEntity, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/thiomajid/EfLight/blob/main/EfLight/Abstractions/ICrudRepository.cs/#L84"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Persists the given <code class="typeparamref">TEntity</code> entity to the database.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;EntityEntry&lt;TEntity&gt;&gt; AddAsync(TEntity entity, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>entity</code> <span class="xref">TEntity</span></dt>
+    <dd></dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.changetracking.entityentry-1">EntityEntry</a>&lt;TEntity&gt;&gt;</dt>
+    <dd><p><strong>1</strong> if the entity has been saved. Otherwise,
+it will be <strong>0</strong>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="EfLight_Abstractions_ICrudRepository_2_AddMany_" data-uid="EfLight.Abstractions.ICrudRepository`2.AddMany*"></a>
+
+  <h3 id="EfLight_Abstractions_ICrudRepository_2_AddMany_System_Collections_Generic_IEnumerable__0__" data-uid="EfLight.Abstractions.ICrudRepository`2.AddMany(System.Collections.Generic.IEnumerable{`0})">
+  AddMany(IEnumerable&lt;TEntity&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/thiomajid/EfLight/blob/main/EfLight/Abstractions/ICrudRepository.cs/#L94"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Persists many <code class="typeparamref">TEntity</code> entities to the database.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int AddMany(IEnumerable&lt;TEntity&gt; entities)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>entities</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;TEntity&gt;</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The number of added records. If an error occurs, then the function will return 0.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="EfLight_Abstractions_ICrudRepository_2_AddManyAsync_" data-uid="EfLight.Abstractions.ICrudRepository`2.AddManyAsync*"></a>
+
+  <h3 id="EfLight_Abstractions_ICrudRepository_2_AddManyAsync_System_Collections_Generic_IEnumerable__0__System_Threading_CancellationToken_" data-uid="EfLight.Abstractions.ICrudRepository`2.AddManyAsync(System.Collections.Generic.IEnumerable{`0},System.Threading.CancellationToken)">
+  AddManyAsync(IEnumerable&lt;TEntity&gt;, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/thiomajid/EfLight/blob/main/EfLight/Abstractions/ICrudRepository.cs/#L97"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;int&gt; AddManyAsync(IEnumerable&lt;TEntity&gt; entities, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>entities</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;TEntity&gt;</dt>
+    <dd></dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="EfLight_Abstractions_ICrudRepository_2_AllAre_" data-uid="EfLight.Abstractions.ICrudRepository`2.AllAre*"></a>
+
+  <h3 id="EfLight_Abstractions_ICrudRepository_2_AllAre_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___" data-uid="EfLight.Abstractions.ICrudRepository`2.AllAre(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+  AllAre(Expression&lt;Func&lt;TEntity, bool&gt;&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/thiomajid/EfLight/blob/main/EfLight/Abstractions/ICrudRepository.cs/#L164"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Checks if all TEntity fullfills the given <code class="paramref">predicate</code></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool AllAre(Expression&lt;Func&lt;TEntity, bool&gt;&gt; predicate)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>predicate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1">Expression</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;TEntity, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;&gt;</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="EfLight_Abstractions_ICrudRepository_2_AllAreAsync_" data-uid="EfLight.Abstractions.ICrudRepository`2.AllAreAsync*"></a>
+
+  <h3 id="EfLight_Abstractions_ICrudRepository_2_AllAreAsync_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___" data-uid="EfLight.Abstractions.ICrudRepository`2.AllAreAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+  AllAreAsync(Expression&lt;Func&lt;TEntity, bool&gt;&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/thiomajid/EfLight/blob/main/EfLight/Abstractions/ICrudRepository.cs/#L171"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Checks if all TEntity fullfills the given <code class="paramref">predicate</code></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;bool&gt; AllAreAsync(Expression&lt;Func&lt;TEntity, bool&gt;&gt; predicate)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>predicate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1">Expression</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;TEntity, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;&gt;</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="EfLight_Abstractions_ICrudRepository_2_Count_" data-uid="EfLight.Abstractions.ICrudRepository`2.Count*"></a>
+
+  <h3 id="EfLight_Abstractions_ICrudRepository_2_Count" data-uid="EfLight.Abstractions.ICrudRepository`2.Count">
+  Count()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/thiomajid/EfLight/blob/main/EfLight/Abstractions/ICrudRepository.cs/#L33"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Counts the number of records in the <code class="typeparamref">TEntity</code> entity's table.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">long Count()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="EfLight_Abstractions_ICrudRepository_2_CountAsync_" data-uid="EfLight.Abstractions.ICrudRepository`2.CountAsync*"></a>
+
+  <h3 id="EfLight_Abstractions_ICrudRepository_2_CountAsync_System_Threading_CancellationToken_" data-uid="EfLight.Abstractions.ICrudRepository`2.CountAsync(System.Threading.CancellationToken)">
+  CountAsync(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/thiomajid/EfLight/blob/main/EfLight/Abstractions/ICrudRepository.cs/#L39"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Counts the number of records in the <code class="typeparamref">TEntity</code> entity's table.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;long&gt; CountAsync(CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="EfLight_Abstractions_ICrudRepository_2_CountWhere_" data-uid="EfLight.Abstractions.ICrudRepository`2.CountWhere*"></a>
+
+  <h3 id="EfLight_Abstractions_ICrudRepository_2_CountWhere_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___" data-uid="EfLight.Abstractions.ICrudRepository`2.CountWhere(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+  CountWhere(Expression&lt;Func&lt;TEntity, bool&gt;&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/thiomajid/EfLight/blob/main/EfLight/Abstractions/ICrudRepository.cs/#L47"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Counts the number of records in the <code class="typeparamref">TEntity</code> entity's table
+fulfilling the given <code class="paramref">predicate</code>'s condition.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">long CountWhere(Expression&lt;Func&lt;TEntity, bool&gt;&gt; predicate)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>predicate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1">Expression</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;TEntity, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;&gt;</dt>
+    <dd><p>A condition that every <code class="typeparamref">TEntity</code> can fulfill</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="EfLight_Abstractions_ICrudRepository_2_CountWhereAsync_" data-uid="EfLight.Abstractions.ICrudRepository`2.CountWhereAsync*"></a>
+
+  <h3 id="EfLight_Abstractions_ICrudRepository_2_CountWhereAsync_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___System_Threading_CancellationToken_" data-uid="EfLight.Abstractions.ICrudRepository`2.CountWhereAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Threading.CancellationToken)">
+  CountWhereAsync(Expression&lt;Func&lt;TEntity, bool&gt;&gt;, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/thiomajid/EfLight/blob/main/EfLight/Abstractions/ICrudRepository.cs/#L55"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Counts the number of records in the <code class="typeparamref">TEntity</code> entity's table
+fulfilling the given <code class="paramref">predicate</code>'s condition.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;long&gt; CountWhereAsync(Expression&lt;Func&lt;TEntity, bool&gt;&gt; predicate, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>predicate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1">Expression</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;TEntity, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;&gt;</dt>
+    <dd></dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="EfLight_Abstractions_ICrudRepository_2_DeleteById_" data-uid="EfLight.Abstractions.ICrudRepository`2.DeleteById*"></a>
+
+  <h3 id="EfLight_Abstractions_ICrudRepository_2_DeleteById__1_" data-uid="EfLight.Abstractions.ICrudRepository`2.DeleteById(`1)">
+  DeleteById(TKey)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/thiomajid/EfLight/blob/main/EfLight/Abstractions/ICrudRepository.cs/#L185"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Deletes a given <code class="typeparamref">TEntity</code> entity based on its <code class="paramref">id</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">EntityEntry&lt;TEntity&gt; DeleteById(TKey id)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <span class="xref">TKey</span></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.changetracking.entityentry-1">EntityEntry</a>&lt;TEntity&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullreferenceexception">NullReferenceException</a></dt>
+    <dd><p>Thrown if no entry matches the given <code class="paramref">id</code></p>
+</dd>
+  </dl>
+
+
+
+  <a id="EfLight_Abstractions_ICrudRepository_2_DeleteByIdAsync_" data-uid="EfLight.Abstractions.ICrudRepository`2.DeleteByIdAsync*"></a>
+
+  <h3 id="EfLight_Abstractions_ICrudRepository_2_DeleteByIdAsync__1_System_Threading_CancellationToken_" data-uid="EfLight.Abstractions.ICrudRepository`2.DeleteByIdAsync(`1,System.Threading.CancellationToken)">
+  DeleteByIdAsync(TKey, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/thiomajid/EfLight/blob/main/EfLight/Abstractions/ICrudRepository.cs/#L195"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Deletes a given <code class="typeparamref">TEntity</code> entity based on its <code class="paramref">id</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;EntityEntry&lt;TEntity&gt;&gt; DeleteByIdAsync(TKey id, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <span class="xref">TKey</span></dt>
+    <dd></dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.changetracking.entityentry-1">EntityEntry</a>&lt;TEntity&gt;&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullreferenceexception">NullReferenceException</a></dt>
+    <dd><p>Thrown if no entry matches the given <code class="paramref">id</code></p>
+</dd>
+  </dl>
+
+
+
+  <a id="EfLight_Abstractions_ICrudRepository_2_DeleteWhere_" data-uid="EfLight.Abstractions.ICrudRepository`2.DeleteWhere*"></a>
+
+  <h3 id="EfLight_Abstractions_ICrudRepository_2_DeleteWhere_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___" data-uid="EfLight.Abstractions.ICrudRepository`2.DeleteWhere(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+  DeleteWhere(Expression&lt;Func&lt;TEntity, bool&gt;&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/thiomajid/EfLight/blob/main/EfLight/Abstractions/ICrudRepository.cs/#L204"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Deletes one or more <code class="typeparamref">TEntity</code> entities based on the <code class="paramref">predicate</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int DeleteWhere(Expression&lt;Func&lt;TEntity, bool&gt;&gt; predicate)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>predicate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1">Expression</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;TEntity, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;&gt;</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The number of removed rows.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullreferenceexception">NullReferenceException</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+  <a id="EfLight_Abstractions_ICrudRepository_2_DeleteWhereAsync_" data-uid="EfLight.Abstractions.ICrudRepository`2.DeleteWhereAsync*"></a>
+
+  <h3 id="EfLight_Abstractions_ICrudRepository_2_DeleteWhereAsync_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___System_Threading_CancellationToken_" data-uid="EfLight.Abstractions.ICrudRepository`2.DeleteWhereAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Threading.CancellationToken)">
+  DeleteWhereAsync(Expression&lt;Func&lt;TEntity, bool&gt;&gt;, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/thiomajid/EfLight/blob/main/EfLight/Abstractions/ICrudRepository.cs/#L213"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Deletes one or more <code class="typeparamref">TEntity</code> entities based on the <code class="paramref">predicate</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;int&gt; DeleteWhereAsync(Expression&lt;Func&lt;TEntity, bool&gt;&gt; predicate, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>predicate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1">Expression</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;TEntity, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;&gt;</dt>
+    <dd></dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dd><p>The number of removed rows.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullreferenceexception">NullReferenceException</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+  <a id="EfLight_Abstractions_ICrudRepository_2_ExistsWhere_" data-uid="EfLight.Abstractions.ICrudRepository`2.ExistsWhere*"></a>
+
+  <h3 id="EfLight_Abstractions_ICrudRepository_2_ExistsWhere_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___" data-uid="EfLight.Abstractions.ICrudRepository`2.ExistsWhere(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+  ExistsWhere(Expression&lt;Func&lt;TEntity, bool&gt;&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/thiomajid/EfLight/blob/main/EfLight/Abstractions/ICrudRepository.cs/#L149"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Checks if at least one <code class="typeparamref">TEntity</code> fullfills the condition of
+the <code class="paramref">predicate</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool ExistsWhere(Expression&lt;Func&lt;TEntity, bool&gt;&gt; predicate)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>predicate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1">Expression</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;TEntity, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;&gt;</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="EfLight_Abstractions_ICrudRepository_2_ExistsWhereAsync_" data-uid="EfLight.Abstractions.ICrudRepository`2.ExistsWhereAsync*"></a>
+
+  <h3 id="EfLight_Abstractions_ICrudRepository_2_ExistsWhereAsync_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___" data-uid="EfLight.Abstractions.ICrudRepository`2.ExistsWhereAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+  ExistsWhereAsync(Expression&lt;Func&lt;TEntity, bool&gt;&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/thiomajid/EfLight/blob/main/EfLight/Abstractions/ICrudRepository.cs/#L157"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Checks if at least one <code class="typeparamref">TEntity</code> fullfills the condition of
+the <code class="paramref">predicate</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;bool&gt; ExistsWhereAsync(Expression&lt;Func&lt;TEntity, bool&gt;&gt; predicate)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>predicate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1">Expression</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;TEntity, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;&gt;</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="EfLight_Abstractions_ICrudRepository_2_FindById_" data-uid="EfLight.Abstractions.ICrudRepository`2.FindById*"></a>
+
+  <h3 id="EfLight_Abstractions_ICrudRepository_2_FindById__1_" data-uid="EfLight.Abstractions.ICrudRepository`2.FindById(`1)">
+  FindById(TKey)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/thiomajid/EfLight/blob/main/EfLight/Abstractions/ICrudRepository.cs/#L111"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Finds the <code class="typeparamref">TEntity</code>'s having the given <code class="paramref">id</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Option&lt;TEntity&gt; FindById(TKey id)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <span class="xref">TKey</span></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Option</span>&lt;TEntity&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="EfLight_Abstractions_ICrudRepository_2_FindByIdAsync_" data-uid="EfLight.Abstractions.ICrudRepository`2.FindByIdAsync*"></a>
+
+  <h3 id="EfLight_Abstractions_ICrudRepository_2_FindByIdAsync__1_System_Threading_CancellationToken_" data-uid="EfLight.Abstractions.ICrudRepository`2.FindByIdAsync(`1,System.Threading.CancellationToken)">
+  FindByIdAsync(TKey, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/thiomajid/EfLight/blob/main/EfLight/Abstractions/ICrudRepository.cs/#L118"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Finds the <code class="typeparamref">TEntity</code>'s having the given <code class="paramref">id</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;Option&lt;TEntity&gt;&gt; FindByIdAsync(TKey id, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <span class="xref">TKey</span></dt>
+    <dd></dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<span class="xref">Option</span>&lt;TEntity&gt;&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="EfLight_Abstractions_ICrudRepository_2_FindWhere_" data-uid="EfLight.Abstractions.ICrudRepository`2.FindWhere*"></a>
+
+  <h3 id="EfLight_Abstractions_ICrudRepository_2_FindWhere_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___" data-uid="EfLight.Abstractions.ICrudRepository`2.FindWhere(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+  FindWhere(Expression&lt;Func&lt;TEntity, bool&gt;&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/thiomajid/EfLight/blob/main/EfLight/Abstractions/ICrudRepository.cs/#L126"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Finds the <strong>first</strong><code class="typeparamref">TEntity</code> entity that matches
+the given <code class="paramref">predicate</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Option&lt;TEntity&gt; FindWhere(Expression&lt;Func&lt;TEntity, bool&gt;&gt; predicate)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>predicate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1">Expression</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;TEntity, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;&gt;</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Option</span>&lt;TEntity&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="EfLight_Abstractions_ICrudRepository_2_FindWhereAsync_" data-uid="EfLight.Abstractions.ICrudRepository`2.FindWhereAsync*"></a>
+
+  <h3 id="EfLight_Abstractions_ICrudRepository_2_FindWhereAsync_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___System_Threading_CancellationToken_" data-uid="EfLight.Abstractions.ICrudRepository`2.FindWhereAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Threading.CancellationToken)">
+  FindWhereAsync(Expression&lt;Func&lt;TEntity, bool&gt;&gt;, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/thiomajid/EfLight/blob/main/EfLight/Abstractions/ICrudRepository.cs/#L134"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Finds the <strong>first</strong><code class="typeparamref">TEntity</code> entity that matches
+the given <code class="paramref">predicate</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;Option&lt;TEntity&gt;&gt; FindWhereAsync(Expression&lt;Func&lt;TEntity, bool&gt;&gt; predicate, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>predicate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1">Expression</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;TEntity, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;&gt;</dt>
+    <dd></dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<span class="xref">Option</span>&lt;TEntity&gt;&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="EfLight_Abstractions_ICrudRepository_2_SaveChanges_" data-uid="EfLight.Abstractions.ICrudRepository`2.SaveChanges*"></a>
+
+  <h3 id="EfLight_Abstractions_ICrudRepository_2_SaveChanges" data-uid="EfLight.Abstractions.ICrudRepository`2.SaveChanges">
+  SaveChanges()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/thiomajid/EfLight/blob/main/EfLight/Abstractions/ICrudRepository.cs/#L16"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Commits changes to the database.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int SaveChanges()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The number of modified entries.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="EfLight_Abstractions_ICrudRepository_2_SaveChangesAsync_" data-uid="EfLight.Abstractions.ICrudRepository`2.SaveChangesAsync*"></a>
+
+  <h3 id="EfLight_Abstractions_ICrudRepository_2_SaveChangesAsync" data-uid="EfLight.Abstractions.ICrudRepository`2.SaveChangesAsync">
+  SaveChangesAsync()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/thiomajid/EfLight/blob/main/EfLight/Abstractions/ICrudRepository.cs/#L23"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Commits changes to the database.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;int&gt; SaveChangesAsync()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dd><p>The number of modified entries.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="EfLight_Abstractions_ICrudRepository_2_Update_" data-uid="EfLight.Abstractions.ICrudRepository`2.Update*"></a>
+
+  <h3 id="EfLight_Abstractions_ICrudRepository_2_Update__0_" data-uid="EfLight.Abstractions.ICrudRepository`2.Update(`0)">
+  Update(TEntity)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/thiomajid/EfLight/blob/main/EfLight/Abstractions/ICrudRepository.cs/#L227"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates data related to <code class="typeparamref">TEntity</code>'s entity.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int Update(TEntity entity)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>entity</code> <span class="xref">TEntity</span></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="EfLight_Abstractions_ICrudRepository_2_UpdateMany_" data-uid="EfLight.Abstractions.ICrudRepository`2.UpdateMany*"></a>
+
+  <h3 id="EfLight_Abstractions_ICrudRepository_2_UpdateMany_System_Collections_Generic_IEnumerable__0__" data-uid="EfLight.Abstractions.ICrudRepository`2.UpdateMany(System.Collections.Generic.IEnumerable{`0})">
+  UpdateMany(IEnumerable&lt;TEntity&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/thiomajid/EfLight/blob/main/EfLight/Abstractions/ICrudRepository.cs/#L235"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates data related to a set of <code class="typeparamref">TEntity</code> entities.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int UpdateMany(IEnumerable&lt;TEntity&gt; entities)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>entities</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;TEntity&gt;</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="EfLight_Abstractions_ICrudRepository_2_UpdateWhere_" data-uid="EfLight.Abstractions.ICrudRepository`2.UpdateWhere*"></a>
+
+  <h3 id="EfLight_Abstractions_ICrudRepository_2_UpdateWhere_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___System_Linq_Expressions_Expression_System_Func_Microsoft_EntityFrameworkCore_Query_SetPropertyCalls__0__Microsoft_EntityFrameworkCore_Query_SetPropertyCalls__0____" data-uid="EfLight.Abstractions.ICrudRepository`2.UpdateWhere(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{Microsoft.EntityFrameworkCore.Query.SetPropertyCalls{`0},Microsoft.EntityFrameworkCore.Query.SetPropertyCalls{`0}}})">
+  UpdateWhere(Expression&lt;Func&lt;TEntity, bool&gt;&gt;, Expression&lt;Func&lt;SetPropertyCalls&lt;TEntity&gt;, SetPropertyCalls&lt;TEntity&gt;&gt;&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/thiomajid/EfLight/blob/main/EfLight/Abstractions/ICrudRepository.cs/#L237"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int UpdateWhere(Expression&lt;Func&lt;TEntity, bool&gt;&gt; predicate, Expression&lt;Func&lt;SetPropertyCalls&lt;TEntity&gt;, SetPropertyCalls&lt;TEntity&gt;&gt;&gt; setPropertyCalls)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>predicate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1">Expression</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;TEntity, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;&gt;</dt>
+    <dd></dd>
+    <dt><code>setPropertyCalls</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1">Expression</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.setpropertycalls-1">SetPropertyCalls</a>&lt;TEntity&gt;, <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.setpropertycalls-1">SetPropertyCalls</a>&lt;TEntity&gt;&gt;&gt;</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="EfLight_Abstractions_ICrudRepository_2_UpdateWhereAsync_" data-uid="EfLight.Abstractions.ICrudRepository`2.UpdateWhereAsync*"></a>
+
+  <h3 id="EfLight_Abstractions_ICrudRepository_2_UpdateWhereAsync_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___System_Linq_Expressions_Expression_System_Func_Microsoft_EntityFrameworkCore_Query_SetPropertyCalls__0__Microsoft_EntityFrameworkCore_Query_SetPropertyCalls__0____System_Threading_CancellationToken_" data-uid="EfLight.Abstractions.ICrudRepository`2.UpdateWhereAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{Microsoft.EntityFrameworkCore.Query.SetPropertyCalls{`0},Microsoft.EntityFrameworkCore.Query.SetPropertyCalls{`0}}},System.Threading.CancellationToken)">
+  UpdateWhereAsync(Expression&lt;Func&lt;TEntity, bool&gt;&gt;, Expression&lt;Func&lt;SetPropertyCalls&lt;TEntity&gt;, SetPropertyCalls&lt;TEntity&gt;&gt;&gt;, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/thiomajid/EfLight/blob/main/EfLight/Abstractions/ICrudRepository.cs/#L242"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;int&gt; UpdateWhereAsync(Expression&lt;Func&lt;TEntity, bool&gt;&gt; predicate, Expression&lt;Func&lt;SetPropertyCalls&lt;TEntity&gt;, SetPropertyCalls&lt;TEntity&gt;&gt;&gt; setPropertyCalls, CancellationToken token = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>predicate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1">Expression</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;TEntity, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;&gt;</dt>
+    <dd></dd>
+    <dt><code>setPropertyCalls</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1">Expression</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.setpropertycalls-1">SetPropertyCalls</a>&lt;TEntity&gt;, <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.setpropertycalls-1">SetPropertyCalls</a>&lt;TEntity&gt;&gt;&gt;</dt>
+    <dd></dd>
+    <dt><code>token</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/thiomajid/EfLight/blob/main/EfLight/Abstractions/ICrudRepository.cs/#L8" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

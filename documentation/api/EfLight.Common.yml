@@ -1,0 +1,54 @@
+### YamlMime:ManagedReference
+items:
+- uid: EfLight.Common
+  commentId: N:EfLight.Common
+  id: EfLight.Common
+  children:
+  - EfLight.Common.PaginationRequest
+  - EfLight.Common.SortDirection
+  langs:
+  - csharp
+  - vb
+  name: EfLight.Common
+  nameWithType: EfLight.Common
+  fullName: EfLight.Common
+  type: Namespace
+  assemblies:
+  - EfLight
+references:
+- uid: EfLight.Common.PaginationRequest
+  commentId: T:EfLight.Common.PaginationRequest
+  parent: EfLight.Common
+  href: EfLight.Common.PaginationRequest.html
+  name: PaginationRequest
+  nameWithType: PaginationRequest
+  fullName: EfLight.Common.PaginationRequest
+- uid: EfLight.Common.SortDirection
+  commentId: T:EfLight.Common.SortDirection
+  parent: EfLight.Common
+  href: EfLight.Common.SortDirection.html
+  name: SortDirection
+  nameWithType: SortDirection
+  fullName: EfLight.Common.SortDirection
+- uid: EfLight.Common
+  commentId: N:EfLight.Common
+  href: EfLight.html
+  name: EfLight.Common
+  nameWithType: EfLight.Common
+  fullName: EfLight.Common
+  spec.csharp:
+  - uid: EfLight
+    name: EfLight
+    href: EfLight.html
+  - name: .
+  - uid: EfLight.Common
+    name: Common
+    href: EfLight.Common.html
+  spec.vb:
+  - uid: EfLight
+    name: EfLight
+    href: EfLight.html
+  - name: .
+  - uid: EfLight.Common
+    name: Common
+    href: EfLight.Common.html
